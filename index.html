@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>人資行政管理系統</title>
+<title>公告管理系統</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -537,10 +537,8 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .inner-page-title{font-family:var(--article-title-font);font-size:var(--article-title-size);font-weight:var(--article-title-weight);color:var(--article-title-color);display:flex;align-items:center;gap:var(--space-3);}
 
 /* 清單/圖示切換 */
-.view-toggle{display:flex;align-items:center;background-color:#f0ece2;border:1px solid var(--color-border-card);border-radius:var(--radius-full);padding:3px;gap:2px;}
-.view-toggle-btn{display:flex;align-items:center;justify-content:center;width:32px;height:28px;border-radius:calc(var(--radius-full) - 2px);border:none;background:transparent;color:var(--color-text-muted);cursor:pointer;font-size:14px;transition:background-color var(--transition-fast),color var(--transition-fast);}
-.view-toggle-btn.active{background-color:#fff;color:var(--color-text-primary);box-shadow:0 1px 3px rgba(0,0,0,.12);}
-.view-toggle-btn:hover:not(.active){color:var(--color-text-primary);}
+.view-toggle-single{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--color-border-card);background-color:#f0ece2;color:var(--color-text-secondary);cursor:pointer;font-size:15px;transition:background-color var(--transition-fast),color var(--transition-fast);}
+.view-toggle-single:hover{background-color:#fff;color:var(--color-text-primary);}
 
 /* 上傳區（淡藍）*/
 .upload-area{border:2px dashed #b8d4ee;border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;align-items:center;gap:var(--space-3);background-color:#eef5fc;text-align:center;}
@@ -822,6 +820,8 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .doccenter-card-date{font-family:var(--font-body);font-size:12px;color:#9a9680;}
 .doccenter-card-dl{display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 6px;position:absolute;bottom:6px;right:6px;border-radius:var(--radius-xs);border:1px solid #666;background:#555;font-size:10px;color:#c9a84c;cursor:pointer;text-decoration:none;white-space:nowrap;}
 .doccenter-card-dl:hover{background-color:#666;}
+.doccenter-list-dl{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-xs);border:1px solid #666;background:#555;font-size:13px;color:#c9a84c;cursor:pointer;text-decoration:none;flex-shrink:0;}
+.doccenter-list-dl:hover{background-color:#666;}
 
 /* 清單/圖示切換 */
 .doccenter-view-list .doccenter-file-list{display:flex;}
@@ -1015,7 +1015,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   /* ── Header：強制單排顯示（標題＋意見欄＋回報問題＋登入都在同一排）── */
   .app-header{ height:auto; min-height:var(--header-height); padding:8px 10px; flex-wrap:nowrap; gap:6px; overflow-x:auto; }
   .header-subtitle{ display:none; }
-  .mob-header-copyright{ display:none; }     /* 單排優先，手機版不顯示 copyright 以節省空間 */
+  .mob-header-copyright{ display:block; font-size:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
   .btn-prefix{ display:none; }                /* 按鈕前綴符號隱藏 */
   .header-brand{ gap:6px; min-width:0; flex-shrink:1; overflow:hidden; }
   .header-title-group{ min-width:0; overflow:hidden; }
@@ -1092,6 +1092,11 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   .form-modal-box,.feedback-modal-box,.reject-modal-box{ padding:18px 16px; }
   #reviewFlowBar{ flex-wrap:wrap !important; row-gap:8px; }
 
+  /* ── 意見欄：手機版欄位縮小＋允許換行，避免「意見類型」選單被推出畫面外 ── */
+  .feedback-row-1{ flex-wrap:wrap; row-gap:8px; }
+  .feedback-name-input{ width:76px; }
+  .feedback-type-select{ width:auto; flex:1 1 90px; min-width:90px; }
+
   /* ── 帳號管理：總帳號數 → 總數（手機版 label 縮短）── */
   #page-account .stat-card:first-child .stat-card-label{ font-size:0; }
   #page-account .stat-card:first-child .stat-card-label::after{ content:'總數'; font-size:var(--font-size-sm); }
@@ -1153,7 +1158,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 }
 </style>
 
-  <meta property="og:title" content="📝｜MYs系統｜人資行政管理系統" />
+  <meta property="og:title" content="📝｜MYs系統｜公告管理系統" />
   <meta property="og:description" content="整合各類行政申請簽核與企業文件中心，全面提升團隊行政效率與協作！" />
 </head>
 <body>
@@ -1169,7 +1174,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
     <button id="loginCloseBtn" onclick="closeLoginOverlay()" style="display:none;position:absolute;top:10px;right:12px;width:28px;height:28px;border:none;background:transparent;cursor:pointer;font-size:16px;color:#9a9482;line-height:1;border-radius:50%;transition:.15s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='transparent'">✕</button>
     <div class="login-logo-row">
       <img class="login-logo" src="https://mys0819.github.io/AMS/assets/00.個人專業圖像.png" alt="MYs" onerror="this.src='https://mys0819.github.io/AMS/assets/MYs_logo_去背.png'" style="width:52px;height:52px;object-fit:cover;border-radius:50%;"/>
-      <span class="login-title">人資行政管理系統</span>
+      <span class="login-title">公告管理系統</span>
     </div>
     <div class="login-subtitle">請登入以使用完整功能</div>
 
@@ -1223,9 +1228,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
     <div class="header-brand">
       <img src="https://mys0819.github.io/AMS/assets/MYs_logo_去背.png" alt="MYs Logo" class="header-logo" style="height:38px;width:auto;opacity:.9;" />
       <div class="header-title-group">
-        <span class="header-title">人資行政管理系統</span>
+        <span class="header-title">公告管理系統</span>
         <span class="header-subtitle" id="header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
-        <span class="mob-header-copyright">© Copyright 2026 MYs System</span>
+        <span class="mob-header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
       </div>
     </div>
     <div class="header-right">
@@ -1291,10 +1296,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
             <div style="display:flex;align-items:center;gap:var(--space-2);">
               <button class="inner-upload-btn" id="dc-upload-btn" onclick="dcTriggerUpload()">📤 上傳</button>
               <input type="file" id="dc-file-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" style="display:none" onchange="dcHandleUpload(this)" />
-              <div class="view-toggle" id="dc-view-toggle">
-                <button class="view-toggle-btn active" onclick="dcSetView('list',this)" title="清單">☰</button>
-                <button class="view-toggle-btn" onclick="dcSetView('grid',this)" title="圖示">⊞</button>
-              </div>
+              <button class="view-toggle-single" id="dc-view-toggle" onclick="dcToggleView(this)" title="切換為清單檢視">☰</button>
             </div>
           </div>
           <div class="doccenter-wrap" style="flex:1;min-height:0;overflow:hidden;">
@@ -1323,11 +1325,11 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
                   </div>
                 </div>
               </div>
-              <!-- 清單模式 -->
-              <div class="doccenter-file-list doccenter-view-list" id="dc-file-area">
+              <!-- 清單模式（預設隱藏）-->
+              <div class="doccenter-file-list doccenter-view-list" id="dc-file-area" style="display:none;">
               </div>
-              <!-- 圖示模式（預設隱藏）-->
-              <div class="doccenter-file-grid" id="dc-file-grid" style="display:none;">
+              <!-- 圖示模式（預設顯示）-->
+              <div class="doccenter-file-grid" id="dc-file-grid">
               </div>
               <!-- 分頁 -->
               <div style="display:flex;justify-content:center;padding-top:var(--space-3);">
@@ -1746,9 +1748,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
       <p class="feedback-modal-subtitle">您的意見將被妥善處理，可選擇具名或匿名送出。</p>
     </div>
     <div class="feedback-row-1">
-      <span class="feedback-label">署名送出</span>
+      <span class="feedback-label">署名</span>
       <input type="text" class="feedback-name-input" id="nameInput" placeholder="請輸入姓名" />
-      <span class="feedback-label">匿名送出</span>
+      <span class="feedback-label">匿名</span>
       <input type="checkbox" class="feedback-checkbox" id="anonCheck" onchange="toggleAnon(this.checked)" />
       <div class="feedback-separator"></div>
       <span class="feedback-label">意見類型</span>
@@ -2023,7 +2025,7 @@ function fetchWithTimeout(url, options, timeoutMs) {
 }
 
 var dcCurrentCat = 'all';
-var dcViewMode   = 'list';
+var dcViewMode   = 'grid';
 var dcPage       = 1;
 var DC_LIST_PER  = 7;
 var DC_GRID_PER  = 12;
@@ -2145,7 +2147,7 @@ function dcBuildFileList(files) {
   area.innerHTML = '';
   grid.innerHTML = '';
   var isAdmin = CURRENT_USER && (CURRENT_USER.role === 'admin' || CURRENT_USER.role === 'boss');
-  var delBtnHtml  = isAdmin ? '<button class="dc-del-btn" onclick="dcDeleteItem(this)" title="刪除">✕</button>' : '';
+  var delBtnHtml  = isAdmin ? '<button class="dc-del-btn" onclick="event.stopPropagation();dcDeleteItem(this)" title="刪除">✕</button>' : '';
   var delCardHtml = isAdmin ? '<button class="dc-card-del-btn" onclick="dcDeleteCard(this)" title="刪除">✕</button>' : '';
 
   // 更新分類計數（用中文→key對應）
@@ -2186,11 +2188,14 @@ function dcBuildFileList(files) {
         '</div>' +
       '</div>' +
       '<span class="doccenter-file-tag" style="flex-shrink:0;align-self:center;">' + tagLabel + '</span>' +
-      '<div class="file-action-btns" style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">' +
-        (canPreview ? '<button style="'+dcDlStyle.replace('text-decoration:none','')+'border:1px solid #555;border-radius:5px;background:#444;cursor:pointer;font-size:11px;height:26px;padding:0 8px;white-space:nowrap;" onclick="dcPreviewFile(\''+f.fileId+'\',\''+f.name+'\')">👁 預覽</button>' : '') +
-        '<a style="'+dcDlStyle+'font-size:11px;height:26px;padding:0 8px;display:flex;align-items:center;justify-content:center;" href="'+dlUrl+'" target="_blank">⬇ 下載</a>' +
+      '<div class="file-action-btns" style="display:flex;align-items:center;gap:6px;flex-shrink:0;">' +
+        '<a class="doccenter-list-dl" href="' + dlUrl + '" target="_blank" title="下載" onclick="event.stopPropagation();">⬇</a>' +
       '</div>' +
       delBtnHtml;
+    if (canPreview) {
+      li.style.cursor = 'pointer';
+      (function(id, nm){ li.addEventListener('click', function(){ dcPreviewFile(id, nm); }); })(f.fileId, f.name);
+    }
     area.appendChild(li);
 
     // 圖示模式
@@ -2449,13 +2454,19 @@ function dcSearch(val) {
   dcRenderPagination(totalPage,matched.length);
 }
 
+function dcToggleView(btn) {
+  var nextMode = (dcViewMode === 'grid') ? 'list' : 'grid';
+  dcSetView(nextMode, btn);
+}
 function dcSetView(mode, btn) {
   dcViewMode=mode;
   var area=document.getElementById('dc-file-area');
   var grid=document.getElementById('dc-file-grid');
   var toggle=document.getElementById('dc-view-toggle');
-  if(toggle)toggle.querySelectorAll('.view-toggle-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
+  if(toggle){
+    toggle.textContent = (mode==='grid') ? '☰' : '⊞';
+    toggle.title = (mode==='grid') ? '切換為清單檢視' : '切換為圖示檢視';
+  }
   if(mode==='grid'){
     DC_PER_PAGE=DC_GRID_PER;
     if(area)area.style.display='none';
