@@ -1038,7 +1038,8 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   .header-right{ gap:4px; flex-wrap:nowrap; flex-shrink:0; }
   .btn,.btn-feedback,.btn-danger{ width:auto; padding:0 8px; font-size:10px; white-space:nowrap; }
   #loginNavBtn{ padding:0 8px !important; font-size:10px !important; height:28px !important; white-space:nowrap; }
-  .user-chip-name{ display:none; }
+  .user-chip{ max-width:none; }
+  .user-chip-name{ display:inline-block; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
   /* ── 主內容：底部留空給 tabbar(60px) + toggle(22px) ── */
   .app-main{ padding:14px 12px 84px 12px; }
@@ -1268,15 +1269,6 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
       <div class="sidebar-divider"></div>
 
       <div class="sidebar-section">
-        <p class="sidebar-section-label">意見</p>
-        <p class="sidebar-section-sub">你的聲音</p>
-        <a href="#" class="sidebar-nav-item" onclick="openFeedback();return false;"><span class="sidebar-icon">💬</span>意見欄</a>
-        <a href="#" class="sidebar-nav-item" onclick="openBugReport();return false;"><span class="sidebar-icon">🐞</span>回報問題</a>
-      </div>
-
-      <div class="sidebar-divider"></div>
-
-      <div class="sidebar-section">
         <p class="sidebar-section-label">系統</p>
         <p class="sidebar-section-sub">主管查閱</p>
         <a href="#" class="sidebar-nav-item" data-perm="workhour" onclick="return showPage('workhour',this)"><span class="sidebar-icon">🕐</span>每日工時登記</a>
@@ -1288,9 +1280,18 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
       <div class="sidebar-divider"></div>
 
       <div class="sidebar-section">
+        <p class="sidebar-section-label">意見</p>
+        <p class="sidebar-section-sub">你的聲音</p>
+        <a href="#" class="sidebar-nav-item" onclick="openFeedback();return false;"><span class="sidebar-icon">💬</span>意見欄</a>
+        <a href="#" class="sidebar-nav-item" onclick="openBugReport();return false;"><span class="sidebar-icon">🐞</span>回報問題</a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
         <p class="sidebar-section-label">管理</p>
         <p class="sidebar-section-sub">主管查閱</p>
-        <a href="#" class="sidebar-nav-item" data-perm="account" onclick="return showPage('feedback-mgr',this)"><span class="sidebar-icon">💬</span>意見回饋</a>
+        <a href="#" class="sidebar-nav-item" data-perm="account" onclick="return showPage('feedback-mgr',this)"><span class="sidebar-icon">📋</span>意見回饋</a>
         <a href="#" class="sidebar-nav-item" data-perm="account" onclick="return showPage('report-mgr',this)"><span class="sidebar-icon">🚨</span>問題回報</a>
       </div>
 
@@ -1353,7 +1354,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
               <div class="doccenter-file-list doccenter-view-list" id="dc-file-area" style="display:none;">
               </div>
               <!-- 圖示模式（預設顯示）-->
-              <div class="doccenter-file-grid" id="dc-file-grid">
+              <div class="doccenter-file-grid" id="dc-file-grid" style="display:grid;">
               </div>
               <!-- 分頁 -->
               <div style="display:flex;justify-content:center;padding-top:var(--space-3);">
@@ -2053,7 +2054,7 @@ var dcViewMode   = 'grid';
 var dcPage       = 1;
 var DC_LIST_PER  = 7;
 var DC_GRID_PER  = 12;
-var DC_PER_PAGE  = 7;
+var DC_PER_PAGE  = 12;
 var dcCatLabels  = {all:'全部文件',hr:'人事相關',admin:'行政表單',training:'教育訓練',announce:'企業公告',law:'法規公告',other:'其他事項'};
 var dcDlStyle    = 'display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 12px;border-radius:4px;border:1px solid #666;background-color:#555;color:#c9a84c;font-family:var(--font-body);font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;';
 
