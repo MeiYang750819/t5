@@ -785,7 +785,6 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .dc-card-del-btn{
   display:inline-flex;align-items:center;justify-content:center;
   width:22px;height:22px;
-  position:absolute;top:6px;right:6px;
   border-radius:50%;
   border:1px solid #854040;
   background-color:rgba(180,60,60,.2);
@@ -816,7 +815,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .doccenter-file-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-4);}
 .doccenter-file-card{
   display:flex;flex-direction:column;align-items:center;gap:var(--space-2);
-  padding:var(--space-5) var(--space-4);
+  padding:var(--space-5) 34px var(--space-5) var(--space-4);
   background-color:#3a3a3a;border:1px solid #555;
   border-radius:var(--radius-lg);cursor:pointer;
   transition:box-shadow var(--transition-fast),background-color var(--transition-fast);
@@ -832,8 +831,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 }
 .doccenter-card-name{font-family:var(--font-body);font-size:13px;font-weight:var(--font-weight-medium);color:#e8e4d8;line-height:1.4;word-break:break-all;max-width:130px;}
 .doccenter-card-date{font-family:var(--font-body);font-size:12px;color:#9a9680;}
-.doccenter-card-dl{display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 6px;position:absolute;bottom:6px;right:6px;border-radius:var(--radius-xs);border:1px solid #666;background:#555;font-size:10px;color:#c9a84c;cursor:pointer;text-decoration:none;white-space:nowrap;}
+.doccenter-card-dl{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:var(--radius-xs);border:1px solid #666;background:#555;font-size:11px;color:#c9a84c;cursor:pointer;text-decoration:none;white-space:nowrap;}
 .doccenter-card-dl:hover{background-color:#666;}
+.doccenter-card-actions{position:absolute;top:50%;right:6px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;}
 .doccenter-list-dl{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-xs);border:1px solid #666;background:#555;font-size:13px;color:#c9a84c;cursor:pointer;text-decoration:none;flex-shrink:0;}
 .doccenter-list-dl:hover{background-color:#666;}
 
@@ -1523,14 +1523,13 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
           <button class="btn" onclick="openAccountModal('add')" id="acc-add-btn" style="display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;">＋ 新增帳號</button>
         </div>
 
-        <!-- 統計列：總帳號=兼職+正職+主管+營運+老闆+已停用 -->
-        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:10px;">
+        <!-- 統計列：總帳號=兼職+正職+主管+營運 -->
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
           <div class="stat-card bg-total"><span class="stat-card-label">總帳號數</span><div class="stat-card-value-row"><span class="stat-card-value" id="acc-total">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress"><span class="stat-card-label">兼職</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#e65100;" id="acc-pt">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress"><span class="stat-card-label">正職</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="acc-ft">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress"><span class="stat-card-label">主管</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="acc-mgr">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress"><span class="stat-card-label">營運</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#7b1fa2;" id="acc-ops">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">老闆</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#c9a84c;" id="acc-boss">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-reject-grp"><span class="stat-card-label">已停用</span><div class="stat-card-value-row"><span class="stat-card-value red" id="acc-dis">0</span><span class="stat-card-unit">人</span></div></div>
         </div>
 
@@ -2173,7 +2172,7 @@ function dcBuildFileList(files) {
   grid.innerHTML = '';
   var isAdmin = CURRENT_USER && (CURRENT_USER.role === 'admin' || CURRENT_USER.role === 'boss');
   var delBtnHtml  = isAdmin ? '<button class="dc-del-btn" onclick="event.stopPropagation();dcDeleteItem(this)" title="刪除">✕</button>' : '';
-  var delCardHtml = isAdmin ? '<button class="dc-card-del-btn" onclick="dcDeleteCard(this)" title="刪除">✕</button>' : '';
+  var delCardHtml = isAdmin ? '<button class="dc-card-del-btn" onclick="event.stopPropagation();dcDeleteCard(this)" title="刪除">✕</button>' : '';
 
   // 更新分類計數（用中文→key對應）
   var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,other:0};
@@ -2233,8 +2232,10 @@ function dcBuildFileList(files) {
       '<span class="doccenter-card-tag">' + tagLabel + '</span>' +
       '<span class="doccenter-card-name">' + dcStripExt(f.name) + '</span>' +
       '<span class="doccenter-card-date">' + dcFormatDate(f.date) + '</span>' +
-      '<a class="doccenter-card-dl" href="' + dlUrl + '" target="_blank">⬇</a>' +
-      delCardHtml;
+      '<div class="doccenter-card-actions">' +
+        '<a class="doccenter-card-dl" href="' + dlUrl + '" target="_blank" onclick="event.stopPropagation();">⬇</a>' +
+        delCardHtml +
+      '</div>';
     (function(id, nm){ gc.addEventListener('click', function(){ if(canPreview) dcPreviewFile(id, nm); }); })(f.fileId, f.name);
     grid.appendChild(gc);
   });
@@ -2569,6 +2570,11 @@ var ACCOUNTS_DATA = [];  // 所有帳號
 var ROLE_LABEL = {
   parttime: 'parttime', fulltime: 'fulltime', employee: 'fulltime',
   manager: 'manager', admin: 'admin', boss: 'boss'
+};
+/* ── 角色對應頭像縮寫字：正職→正／兼職→兼／主管→管／營運→營 ── */
+var ROLE_AVATAR_CHAR = {
+  parttime: '兼', fulltime: '正', employee: '正',
+  manager: '管', admin: '營', boss: '闆'
 };
 var ROLE_BADGE = {
   parttime: 'background:#e65100;color:#fff;',
@@ -3017,7 +3023,7 @@ function onLoginSuccess(user, silent) {
   // 顯示 User Chip
   var chip = document.getElementById('userChip');
   chip.style.display = 'flex';
-  document.getElementById('userInitial').textContent = user.name.charAt(0);
+  document.getElementById('userInitial').textContent = ROLE_AVATAR_CHAR[user.role] || user.name.charAt(0);
   // 手機版：userName 隱藏第一個字（頭像已顯示），電腦版顯示全名
   var fullName = user.name;
   var nameEl = document.getElementById('userName');
@@ -3162,15 +3168,22 @@ function toggleMobileSidebarSection(sec, btn) {
   // 只把這個分類下可見的 nav item 複製進面板
   sec.querySelectorAll('.sidebar-nav-item').forEach(function(item){
     if (item.style.display === 'none') return;
-    var el = document.createElement('div');
+    var isExternal = item.classList.contains('external') || item.hasAttribute('href') && item.getAttribute('href') !== '#';
+    var el = document.createElement(isExternal ? 'a' : 'div');
     el.className = item.className;
     el.innerHTML  = item.innerHTML;
-    var onclickAttr = item.getAttribute('onclick');
-    if (onclickAttr) {
-      // 在原本的 onclick 後加上關閉面板
-      el.setAttribute('onclick', onclickAttr + '; closeMobileSidebar();');
+    if (isExternal) {
+      el.setAttribute('href', item.getAttribute('href'));
+      if (item.getAttribute('target')) el.setAttribute('target', item.getAttribute('target'));
+      el.addEventListener('click', function(){ closeMobileSidebar(); });
     } else {
-      el.onclick = function(){ closeMobileSidebar(); };
+      var onclickAttr = item.getAttribute('onclick');
+      if (onclickAttr) {
+        // 在原本的 onclick 後加上關閉面板
+        el.setAttribute('onclick', onclickAttr + '; closeMobileSidebar();');
+      } else {
+        el.onclick = function(){ closeMobileSidebar(); };
+      }
     }
     panel.appendChild(el);
   });
@@ -3370,14 +3383,13 @@ function updateAccStats() {
     else if(a.role==='fulltime' || a.role==='employee') ft++;
     else if(a.role==='parttime') pt++;
   });
-  var total = pt + ft + mgr + ops + boss + dis;
+  var total = pt + ft + mgr + ops;
   var g = function(id){ return document.getElementById(id); };
   if(g('acc-total')) g('acc-total').textContent = total;
   if(g('acc-pt'))    g('acc-pt').textContent    = pt;
   if(g('acc-ft'))    g('acc-ft').textContent    = ft;
   if(g('acc-mgr'))   g('acc-mgr').textContent   = mgr;
   if(g('acc-ops'))   g('acc-ops').textContent   = ops;
-  if(g('acc-boss'))  g('acc-boss').textContent  = boss;
   if(g('acc-dis'))   g('acc-dis').textContent   = dis;
 }
 
