@@ -313,7 +313,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
 .page-section.active{display:flex;flex-direction:column;}
 #page-doccenter.active{display:flex;flex:1;min-height:0;flex-direction:column;}
-#page-workhour.active,#page-labor.active{display:flex;flex:1;min-height:0;flex-direction:column;}
+#page-workhour.active,#page-labor.active,#page-extraops.active{display:flex;flex:1;min-height:0;flex-direction:column;}
 
 /* ============================================================
    統計卡片
@@ -479,6 +479,58 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    ============================================================ */
 .modal-overlay{display:none;position:fixed;inset:0;background-color:rgba(0,0,0,.55);z-index:8000;align-items:center;justify-content:center;pointer-events:auto !important;}
 .modal-overlay.open{display:flex;}
+
+/* ── 加入主畫面教學（手機版）── */
+.a2hs-overlay{
+  display:none;position:fixed;inset:0;z-index:9500;
+  background-color:rgba(10,10,8,.82);
+  align-items:center;justify-content:center;
+  padding:20px;
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+}
+.a2hs-overlay.open{display:flex;}
+.a2hs-box{
+  background-color:#242420;border:1px solid #4a4636;
+  border-radius:var(--radius-xl);
+  width:100%;max-width:380px;max-height:88vh;overflow-y:auto;
+  padding:24px 20px 20px;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;gap:16px;
+}
+.a2hs-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.a2hs-icon{font-size:36px;line-height:1;margin-bottom:4px;}
+.a2hs-title{font-family:var(--font-display);font-size:17px;font-weight:700;color:#f0ece2;}
+.a2hs-sub{font-family:var(--font-body);font-size:12px;color:#9a9680;}
+.a2hs-tabs{display:flex;gap:6px;background-color:#1c1c17;border-radius:var(--radius-md);padding:3px;}
+.a2hs-tab{
+  flex:1;text-align:center;padding:8px 6px;border-radius:calc(var(--radius-md) - 2px);
+  border:none;background:transparent;color:#9a9680;
+  font-family:var(--font-body);font-size:12px;font-weight:600;cursor:pointer;
+  transition:background-color .15s,color .15s;
+}
+.a2hs-tab.active{background-color:#c9a84c;color:#1c1c15;}
+.a2hs-steps{display:flex;flex-direction:column;gap:14px;}
+.a2hs-step{display:flex;align-items:center;gap:14px;}
+.a2hs-step-visual{
+  flex-shrink:0;width:44px;height:44px;border-radius:var(--radius-md);
+  background-color:#1c1c17;border:1px solid #4a4636;
+  display:flex;align-items:center;justify-content:center;
+}
+.a2hs-step-text{font-family:var(--font-body);font-size:13px;line-height:1.5;color:#d8d4c4;}
+.a2hs-step-text b{color:#c9a84c;font-weight:700;}
+.a2hs-step-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:50%;
+  background-color:#c9a84c;color:#1c1c15;
+  font-size:11px;font-weight:700;margin-right:6px;
+}
+.a2hs-confirm-btn{
+  margin-top:4px;width:100%;height:44px;border-radius:var(--radius-md);
+  border:none;background-color:#c9a84c;color:#1c1c15;
+  font-family:var(--font-body);font-size:14px;font-weight:700;cursor:pointer;
+  transition:background-color .15s;
+}
+.a2hs-confirm-btn:hover{background-color:#ddbe63;}
 
 /* 退件 Modal */
 .reject-modal-box{background-color:var(--color-bg-card);border-radius:var(--radius-lg);padding:var(--space-6);width:440px;max-width:92vw;box-shadow:var(--shadow-modal);display:flex;flex-direction:column;gap:var(--space-4);}
@@ -1182,6 +1234,66 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
   <!-- ══ Header ══ -->
     
+<!-- ════ 加入主畫面教學（手機版）════ -->
+<div class="a2hs-overlay" id="a2hsOverlay">
+  <div class="a2hs-box">
+    <div class="a2hs-header">
+      <span class="a2hs-icon">📲</span>
+      <p class="a2hs-title">把系統加到手機桌面</p>
+      <p class="a2hs-sub">加入桌面後，開啟就像 App 一樣快速方便</p>
+    </div>
+
+    <div class="a2hs-tabs">
+      <button class="a2hs-tab active" id="a2hsTabIOS" onclick="a2hsSwitchTab('ios')">🍎 iPhone / iPad</button>
+      <button class="a2hs-tab" id="a2hsTabAndroid" onclick="a2hsSwitchTab('android')">🤖 Android</button>
+    </div>
+
+    <div class="a2hs-steps" id="a2hsStepsIOS">
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><rect x="4" y="14" width="16" height="7" rx="2"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">1</span>點擊瀏覽器<b>下方（或上方）工具列</b>的「分享」圖示</div>
+      </div>
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>在選單中向下找到並點選「<b>加入主畫面</b>」</div>
+      </div>
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊右上角「<b>新增</b>」即完成，桌面會出現系統圖示</div>
+      </div>
+    </div>
+
+    <div class="a2hs-steps" id="a2hsStepsAndroid" style="display:none;">
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="#c9a84c"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">1</span>點擊瀏覽器右上角「⋮」更多選項</div>
+      </div>
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>選擇「<b>加到主畫面</b>」或「<b>安裝應用程式</b>」</div>
+      </div>
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊「<b>新增</b>」／「<b>安裝</b>」即完成，桌面會出現系統圖示</div>
+      </div>
+    </div>
+
+    <button class="a2hs-confirm-btn" onclick="closeA2hsModal()">我知道了，開始使用</button>
+  </div>
+</div>
+
 <!-- ════ 登入畫面 ════ -->
 <div class="login-overlay" id="loginOverlay">
   <div class="login-box" style="position:relative;">
@@ -1264,6 +1376,14 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <p class="sidebar-section-label">文件</p>
         <p class="sidebar-section-sub">全體同仁</p>
         <a href="#" class="sidebar-nav-item active" onclick="return showPage('doccenter',this)"><span class="sidebar-icon">🗂</span>文件中心</a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-section-label">表單</p>
+        <p class="sidebar-section-sub">全體同仁</p>
+        <a href="#" class="sidebar-nav-item" data-perm="extraops" onclick="return showPage('extraops',this)"><span class="sidebar-icon">📋</span>線上表單申請</a>
       </div>
 
       <div class="sidebar-divider"></div>
@@ -1510,7 +1630,80 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         </div>
       </div>
 
-    
+      <!-- ════ 線上表單申請 ════ -->
+      <div class="page-section" id="page-extraops">
+        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;overflow-y:auto;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">📋 線上表單申請</p></div>
+          <!-- 收銀交接表 -->
+          <div class="article-section">
+            <p class="article-section-title">© 收銀交接表</p>
+            <p class="article-body">
+              表單申請權限後，並回報於Line群組：<br>
+              03_交接群➤SC並Tag名揚完成申請，<br>
+              兼職同仁請私訊名揚完成申請，<br>
+              並告知個人信箱帳號，<br>
+              如無回報，則權限不開放。
+            </p>
+            <div class="article-btn-group">
+              <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1LYvOx2IOybatsGuxmiJFwcuFy3Ei9eOTM7pG1ziUy9Q/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
+            </div>
+          </div>
+          <!-- 各項庫存盤點表 -->
+          <div class="article-section">
+            <p class="article-section-title">© 各項庫存盤點表</p>
+            <p class="article-body">
+              表單申請權限後，並回報於Line群組：<br>
+              03_交接群➤SC並Tag名揚完成申請，<br>
+              兼職同仁請私訊名揚完成申請，<br>
+              並告知個人信箱帳號，<br>
+              如無回報，則權限不開放。
+            </p>
+            <div class="article-btn-group">
+              <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1qrJp4aRKWw9xuy-M_NdRXOAn-4SbVsjBQJZK8jkRw74/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
+            </div>
+          </div>
+          <!-- 個人事務追蹤清單（正職以上）-->
+          <div class="article-section" data-perm-block="fulltime">
+            <p class="article-section-title">© 個人事務追蹤清單</p>
+            <p class="article-body">
+              表單申請權限後，並回報於Line群組：<br>
+              03_交接群➤SC並Tag名揚完成申請，<br>
+              並告知個人信箱帳號，<br>
+              如無回報，則權限不開放。
+            </p>
+            <div class="article-btn-group">
+              <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1qfuPQ5paUZQCuD5AhgFPVCKfmyW0KbNtbnysUpGLdDc/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
+            </div>
+          </div>
+          <!-- 正職職掌分配表（正職以上）-->
+          <div class="article-section" data-perm-block="fulltime">
+            <p class="article-section-title">© 正職職掌分配表</p>
+            <p class="article-body">
+              表單申請權限後，並回報於Line群組：<br>
+              03_交接群➤SC並Tag名揚完成申請，<br>
+              並告知個人信箱帳號，<br>
+              如無回報，則權限不開放。
+            </p>
+            <div class="article-btn-group">
+              <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1TshFbeV_lOZ56kp8ugfjNjDorWcZ11JwyNKhOwvHIbs/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
+            </div>
+          </div>
+          <!-- 個人裝備領取表（正職以上）-->
+          <div class="article-section" data-perm-block="fulltime">
+            <p class="article-section-title">© 個人裝備領取表</p>
+            <p class="article-body">
+              表單申請權限後，並回報於Line群組：<br>
+              03_交接群➤SC並Tag名揚完成申請，<br>
+              並告知個人信箱帳號，<br>
+              如無回報，則權限不開放。
+            </p>
+            <div class="article-btn-group">
+              <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1iIQZ-oalInH6s0q8h1KFiow5EHk97SeGOEbylVDK0bQ/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- ════ 帳號管理 ════ -->
       <div class="page-section" id="page-account">
 
@@ -1854,6 +2047,13 @@ function showPage(pageId, el) {
   if (pageId === 'account')     loadAccounts();
   if (pageId === 'feedback-mgr') loadFeedbackMgr();
   if (pageId === 'report-mgr')   loadReportMgr();
+  if (pageId === 'extraops') {
+    var r = CURRENT_USER ? CURRENT_USER.role : 'guest';
+    var isFullPlus = (r === 'fulltime' || r === 'manager' || r === 'admin');
+    document.querySelectorAll('[data-perm-block="fulltime"]').forEach(function(el){
+      el.style.display = isFullPlus ? '' : 'none';
+    });
+  }
   return false;
 }
 
@@ -2578,9 +2778,9 @@ var ROLE_AVATAR_CHAR = {
 };
 var ROLE_BADGE = {
   parttime: 'background:#e65100;color:#fff;',
-  fulltime:  'background:#c8a84c;color:#1c1c15;',
-  employee:  'background:#757575;color:#fff;',
-  manager:   'background:#5b9bd5;color:#fff;',
+  fulltime:  'background:#c9a84c;color:#1c1c15;',
+  employee:  'background:#c9a84c;color:#1c1c15;',
+  manager:   'background:#1a3a6b;color:#fff;',
   admin:     'background:#7b1fa2;color:#fff;',
   boss:      'background:#b71c1c;color:#fff;',
 };
@@ -2588,22 +2788,22 @@ var ROLE_BADGE = {
 /* ── 各角色可見的側邊欄 item（data-role 屬性）── */
 var ROLE_PAGES = {
   guest:    [],
-  parttime: ['doccenter'],
+  parttime: ['doccenter','extraops'],
   employee: ['doccenter'],
-  fulltime: ['doccenter'],
-  manager:  ['doccenter','workhour','labor','main'],
-  admin:    ['doccenter','workhour','labor','main','account','feedback-mgr','report-mgr'],
-  boss:     ['doccenter','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  fulltime: ['doccenter','extraops'],
+  manager:  ['doccenter','extraops','workhour','labor','main'],
+  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
 };
 
 var ROLE_SIDEBAR_MAP = {
   guest:    [],
-  parttime: ['doccenter'],
+  parttime: ['doccenter','extraops'],
   employee: ['doccenter'],
-  fulltime: ['doccenter'],
-  manager:  ['doccenter','workhour','labor','main'],
-  admin:    ['doccenter','workhour','labor','main','account','feedback-mgr','report-mgr'],
-  boss:     ['doccenter','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  fulltime: ['doccenter','extraops'],
+  manager:  ['doccenter','extraops','workhour','labor','main'],
+  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
 };
 
 /* ══ 意見回饋 & 問題回報 管理 ══ */
@@ -3704,8 +3904,42 @@ function showToastGlobal(msg, type) {
   setTimeout(function(){ t.style.transform='translateX(120%)'; setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },350); }, 3500);
 }
 
+/* ── 加入主畫面教學（手機版）── */
+function isMobileUA() {
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+function a2hsSwitchTab(platform) {
+  var tabIOS      = document.getElementById('a2hsTabIOS');
+  var tabAndroid  = document.getElementById('a2hsTabAndroid');
+  var stepsIOS    = document.getElementById('a2hsStepsIOS');
+  var stepsAndroid= document.getElementById('a2hsStepsAndroid');
+  if (platform === 'android') {
+    if (tabAndroid) tabAndroid.classList.add('active');
+    if (tabIOS) tabIOS.classList.remove('active');
+    if (stepsAndroid) stepsAndroid.style.display = '';
+    if (stepsIOS) stepsIOS.style.display = 'none';
+  } else {
+    if (tabIOS) tabIOS.classList.add('active');
+    if (tabAndroid) tabAndroid.classList.remove('active');
+    if (stepsIOS) stepsIOS.style.display = '';
+    if (stepsAndroid) stepsAndroid.style.display = 'none';
+  }
+}
+function closeA2hsModal() {
+  var ov = document.getElementById('a2hsOverlay');
+  if (ov) ov.classList.remove('open');
+}
+function showA2hsModalIfMobile() {
+  if (!isMobileUA()) return; // 電腦版不跳出
+  var ov = document.getElementById('a2hsOverlay');
+  if (!ov) return;
+  a2hsSwitchTab(/Android/i.test(navigator.userAgent) ? 'android' : 'ios');
+  ov.classList.add('open');
+}
+
 /* ── 國假兼職判斷：初始化時根據 CURRENT_USER.title 設定顯示 ── */
 
+showA2hsModalIfMobile(); // 手機版：系統載入時先顯示「加入主畫面」教學
 dcLoadFiles();
 applyBlur(true); // 預設模糊，initAuth 登入成功後解除
 // 手機版：sidebar 內的外部連結（target=_blank，不會經過 showPage）點擊後也收合抽屜
