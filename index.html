@@ -1239,8 +1239,8 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   <div class="a2hs-box">
     <div class="a2hs-header">
       <span class="a2hs-icon">📲</span>
-      <p class="a2hs-title">把系統加到手機桌面</p>
-      <p class="a2hs-sub">加入桌面後，開啟就像 App 一樣快速方便</p>
+      <p class="a2hs-title">將系統加到手機桌面</p>
+      <p class="a2hs-sub">加入桌面後，開啟就像App一樣快速方便</p>
     </div>
 
     <div class="a2hs-tabs">
@@ -1253,7 +1253,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><rect x="4" y="14" width="16" height="7" rx="2"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">1</span>點擊瀏覽器<b>下方（或上方）工具列</b>的「分享」圖示</div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">1</span>點擊瀏覽器<b>下方工具列</b>的「分享」圖示</div>
       </div>
       <div class="a2hs-step">
         <div class="a2hs-step-visual">
@@ -1265,7 +1265,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊右上角「<b>新增</b>」即完成，桌面會出現系統圖示</div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊右上角「<b>新增</b>」即完成</div>
       </div>
     </div>
 
@@ -1286,11 +1286,11 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊「<b>新增</b>」／「<b>安裝</b>」即完成，桌面會出現系統圖示</div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>點擊「<b>新增</b>」／「<b>安裝</b>」即完成</div>
       </div>
     </div>
 
-    <button class="a2hs-confirm-btn" onclick="closeA2hsModal()">我知道了，開始使用</button>
+    <button class="a2hs-confirm-btn" onclick="closeA2hsModal()">已完全明白，開始使用</button>
   </div>
 </div>
 
@@ -1338,7 +1338,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
     <div class="login-err" id="login-err"></div>
 
     <button class="login-btn" id="login-btn" onclick="doLogin()">登 入</button>
-    <div style="text-align:center;margin-top:-8px;"><a href="#" onclick="testGasConnection();return false;" style="font-size:11px;color:var(--color-text-muted);text-decoration:underline;">⚙ 測試 GAS 連線</a></div>
+    <div style="text-align:center;margin-top:-8px;"><a href="#" onclick="testGasConnection();return false;" style="font-size:11px;color:var(--color-text-muted);text-decoration:underline;">⚙ 測試GAS連線</a></div>
 
   </div>
 </div>
@@ -1401,7 +1401,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
       <div class="sidebar-section">
         <p class="sidebar-section-label">意見</p>
-        <p class="sidebar-section-sub">你的聲音</p>
+        <p class="sidebar-section-sub">同仁反饋</p>
         <a href="#" class="sidebar-nav-item" onclick="openFeedback();return false;"><span class="sidebar-icon">💬</span>意見欄</a>
         <a href="#" class="sidebar-nav-item" onclick="openBugReport();return false;"><span class="sidebar-icon">🐞</span>回報問題</a>
       </div>
@@ -1413,6 +1413,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <p class="sidebar-section-sub">主管查閱</p>
         <a href="#" class="sidebar-nav-item" data-perm="account" onclick="return showPage('feedback-mgr',this)"><span class="sidebar-icon">📋</span>意見回饋</a>
         <a href="#" class="sidebar-nav-item" data-perm="account" onclick="return showPage('report-mgr',this)"><span class="sidebar-icon">🚨</span>問題回報</a>
+        <a href="#" class="sidebar-nav-item" data-perm="readlist" onclick="return showPage('readlist',this)"><span class="sidebar-icon">✅</span>已讀名單</a>
       </div>
 
       <div class="sidebar-divider"></div>
@@ -1563,6 +1564,36 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
           </table>
         </div>
         <div id="rp-mobile-list" style="display:none;"></div>
+      </div>
+
+      <!-- ════ 已讀名單 ════ -->
+      <div class="page-section" id="page-readlist" style="gap:var(--space-4);">
+        <div class="table-section">
+          <div class="toolbar">
+            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
+            <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rl-count">0</span> 筆</span>
+          </div>
+          <table class="data-table">
+            <colgroup>
+              <col style="width:90px;"/>
+              <col style="width:200px;"/>
+              <col/>
+              <col/>
+              <col style="width:70px;"/>
+              <col style="width:70px;"/>
+            </colgroup>
+            <thead><tr>
+              <th style="text-align:center;">公告分類</th>
+              <th style="text-align:center;">公告名稱</th>
+              <th style="text-align:center;">已讀取</th>
+              <th style="text-align:center;">未讀取</th>
+              <th style="text-align:center;">已讀</th>
+              <th style="text-align:center;">未讀</th>
+            </tr></thead>
+            <tbody id="rl-tbody"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr></tbody>
+          </table>
+        </div>
+        <div id="rl-mobile-list" style="display:none;"></div>
       </div>
 
 
@@ -1872,91 +1903,6 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   </div>
 </div>
 
-<!-- ══ 新增申請 Modal ══ -->
-<div class="modal-overlay" id="formModal">
-  <div class="form-modal-box">
-    <p class="form-modal-title">＋ 新增行政申請</p>
-    <div class="form-notice">⚠ 送出前請確認所有必填欄位已填寫，同一員工同期間不可重複送單。</div>
-
-    <div class="form-row">
-      <label class="form-label">申請類型 <span class="required">*</span></label>
-      <select class="form-select" id="f-type">
-        <option value="">請選擇申請類型</option>
-        <option value="請假申請">請假申請</option>
-        <option value="離職申請">離職申請</option>
-        <option value="留職申請">留職申請</option>
-        <option value="復職申請">復職申請</option>
-        <option value="展延申請">展延申請</option>
-      </select>
-      <p class="form-error-msg" id="err-type">請選擇申請類型</p>
-    </div>
-
-    <div class="form-row">
-      <label class="form-label">員工姓名 <span class="required">*</span></label>
-      <div style="position:relative;">
-        <input class="form-input" type="text" id="f-name" placeholder="請輸入員工姓名" />
-        <span id="f-name-lock" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:#9a9482;">🔒 自動帶入</span>
-      </div>
-      <p class="form-error-msg" id="err-name">請輸入員工姓名</p>
-    </div>
-
-    <div class="form-row">
-      <label class="form-label">所屬團隊 <span class="required">*</span></label>
-      <div style="position:relative;">
-        <select class="form-select" id="f-team">
-          <option value="">請選擇</option>
-          <option value="外場－正職">外場－正職</option>
-          <option value="外場－兼職">外場－兼職</option>
-          <option value="吧台－正職">吧台－正職</option>
-          <option value="吧台－兼職">吧台－兼職</option>
-          <option value="內廚－正職">內廚－正職</option>
-          <option value="內廚－兼職">內廚－兼職</option>
-        </select>
-        <span id="f-team-lock" style="display:none;position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:12px;color:#9a9482;pointer-events:none;">🔒</span>
-      </div>
-      <p class="form-error-msg" id="err-team">請選擇所屬團隊</p>
-    </div>
-
-    <div class="form-row">
-      <label class="form-label">起始日期 <span class="required">*</span></label>
-      <input class="form-input" type="date" id="f-start" />
-      <p class="form-error-msg" id="err-start">請選擇起始日期</p>
-    </div>
-
-    <div class="form-row">
-      <label class="form-label">結束日期 <span class="required">*</span></label>
-      <input class="form-input" type="date" id="f-end" />
-      <p class="form-error-msg" id="err-end">請選擇結束日期（不得早於起始日期）</p>
-    </div>
-
-    <div class="form-row">
-      <label class="form-label">備註說明</label>
-      <textarea class="form-textarea" id="f-note" placeholder="選填，如有附件說明或特殊情況請填寫"></textarea>
-    </div>
-
-    <div class="form-footer">
-      <button class="btn-cancel" onclick="closeFormModal()">✕ 取消</button>
-      <button class="btn-submit" onclick="submitForm()">✓ 送出申請</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ 退件原因 Modal ══ -->
-<div class="modal-overlay" id="rejectModal">
-  <div class="reject-modal-box">
-    <p class="reject-modal-title">📋 退件原因</p>
-    <div class="reject-modal-meta">
-      <div class="reject-modal-meta-row"><span class="reject-modal-meta-label">申請人</span><span class="reject-modal-meta-value">美秀集團（外場－正職）</span></div>
-      <div class="reject-modal-meta-row"><span class="reject-modal-meta-label">申請類型</span><span class="reject-modal-meta-value">請假申請</span></div>
-      <div class="reject-modal-meta-row"><span class="reject-modal-meta-label">審核人</span><span class="reject-modal-meta-value">李主管</span></div>
-      <div class="reject-modal-meta-row"><span class="reject-modal-meta-label">退件時間</span><span class="reject-modal-meta-value">2026/04/11 14:32</span></div>
-    </div>
-    <p class="reject-modal-reason-label">退件原因</p>
-    <div class="reject-modal-reason-box">假單未附醫師診斷證明書，請補齊相關文件後重新送出申請。如有疑問請洽人資部門。</div>
-    <div class="reject-modal-footer"><button class="btn-cancel" onclick="closeRejectModal()">關閉</button></div>
-  </div>
-</div>
-
 <!-- ══ 意見欄 Modal ══ -->
 <div class="modal-overlay" id="feedbackModal">
   <div class="feedback-modal-box">
@@ -2047,6 +1993,7 @@ function showPage(pageId, el) {
   if (pageId === 'account')     loadAccounts();
   if (pageId === 'feedback-mgr') loadFeedbackMgr();
   if (pageId === 'report-mgr')   loadReportMgr();
+  if (pageId === 'readlist')     loadReadList();
   if (pageId === 'extraops') {
     var r = CURRENT_USER ? CURRENT_USER.role : 'guest';
     var isFullPlus = (r === 'fulltime' || r === 'manager' || r === 'admin');
@@ -2060,65 +2007,6 @@ function showPage(pageId, el) {
 /* ══ 清單/圖示切換 ══ */
 
 /* ══ 上傳 PDF ══ */
-
-/* ══ 申請表單 Modal ══ */
-function closeFormModal() {
-  document.getElementById('formModal').classList.remove('open');
-  clearFormErrors();
-  // 還原鎖定樣式
-  var nameEl  = document.getElementById('f-name');
-  var teamEl  = document.getElementById('f-team');
-  var nameLock= document.getElementById('f-name-lock');
-  var teamLock= document.getElementById('f-team-lock');
-  nameEl.readOnly = false; nameEl.style.cssText = ''; nameEl.value = '';
-  teamEl.disabled = false; teamEl.style.cssText = ''; teamEl.value = '';
-  if (nameLock) nameLock.style.display = 'none';
-  if (teamLock) teamLock.style.display = 'none';
-}
-document.getElementById('formModal').addEventListener('click', function(e){ if(e.target===this) closeFormModal(); });
-
-function clearFormErrors() {
-  ['type','name','team','start','end'].forEach(function(k){
-    document.getElementById('f-'+k).classList.remove('error');
-    document.getElementById('err-'+k).classList.remove('show');
-  });
-}
-
-function submitForm() {
-  clearFormErrors();
-  var ok=true;
-  var ftype  = document.getElementById('f-type').value;
-  var fname  = document.getElementById('f-name').value.trim();
-  // disabled select 的 value 依然可讀，但加一層保護
-  var fteamEl = document.getElementById('f-team');
-  var fteam  = fteamEl.value || (fteamEl.options[fteamEl.selectedIndex] ? fteamEl.options[fteamEl.selectedIndex].value : '');
-  var fstart = document.getElementById('f-start').value;
-  var fend   = document.getElementById('f-end').value;
-
-  if(!ftype)  { showErr('type'); ok=false; }
-  if(!fname)  { showErr('name'); ok=false; }
-  if(!fteam)  { showErr('team'); ok=false; }
-  if(!fstart) { showErr('start'); ok=false; }
-  if(!fend || (fstart && fend < fstart)) { showErr('end'); ok=false; }
-
-  /* 重複送單檢查（示意）*/
-  if(ok) {
-    var rows=document.querySelectorAll('#tableBody tr');
-    for(var i=0;i<rows.length;i++){
-      if(rows[i].getAttribute('data-name')===fname){
-        alert('⚠ 重複送單提醒：\n「'+fname+'」本月已有相同類型或重疊期間的申請，\n請確認後再送出。');
-        return;
-      }
-    }
-    alert('✅ 申請已送出！\n申請人：'+fname+'\n類型：'+ftype+'\n期間：'+fstart+' ~ '+fend);
-    closeFormModal();
-  }
-}
-
-function showErr(k) {
-  document.getElementById('f-'+k).classList.add('error');
-  document.getElementById('err-'+k).classList.add('show');
-}
 
 /* ══ 意見欄 ══ */
 function openFeedback()  { document.getElementById('feedbackModal').classList.add('open'); }
@@ -2180,8 +2068,6 @@ function submitFeedback() {
 }
 
 /* ══ 退件原因 ══ */
-function closeRejectModal() { document.getElementById('rejectModal').classList.remove('open'); }
-document.getElementById('rejectModal').addEventListener('click',function(e){if(e.target===this)closeRejectModal();});
 
 /* ══ 回報問題 ══ */
 function openBugReport()  { document.getElementById('bugModal').classList.add('open'); }
@@ -2225,19 +2111,13 @@ function submitBug() {
   });
 }
 
-
-/* ══ 年度切換 ══ */
-
-/* ══ 全年切換 ══ */
-
-
 /* ══ 分頁 ══ */
 
 
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycby2eBLTisIYqu12sHpllnCVgjl40RC2t-oVTXluI1eMB44vR-Pc4u4GZAtyeyWHc98Bqw/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyxebh0AYugJWypyKk33dMbID3py60uN_o6SDXdjK7nnCLTliQCPlrKLriyl6I5kdS-/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -2249,6 +2129,7 @@ function fetchWithTimeout(url, options, timeoutMs) {
 }
 
 var dcCurrentCat = 'all';
+var DC_CAN_UPLOAD = false; // 是否可上傳（admin / manager），由 applyPermissions() 設定
 var dcViewMode   = 'grid';
 var dcPage       = 1;
 var DC_LIST_PER  = 7;
@@ -2295,6 +2176,7 @@ function dcUpdateCounts() {
 
 /* ── 圖片點擊預覽 ── */
 function dcPreviewFile(fileId, name) {
+  dcRecordRead(fileId);
   var ext = (name || '').split('.').pop().toLowerCase();
   var isImg = ['jpg','jpeg','png','gif','webp','bmp'].indexOf(ext) >= 0;
   var isPdf = ext === 'pdf';
@@ -2330,6 +2212,21 @@ function dcPreviewFile(fileId, name) {
     }
   }
   overlay.style.display = 'flex';
+}
+
+/* ── 記錄已讀（同仁點開公告時呼叫，寫入「已讀名單」）── */
+function dcRecordRead(fileId) {
+  if (!CURRENT_USER || !fileId) return;
+  fetch(GAS_URL, {
+    method: 'POST',
+    mode:   'no-cors',
+    body: JSON.stringify({
+      action: 'recordRead',
+      fileId: fileId,
+      mail:   CURRENT_USER.mail || '',
+      name:   CURRENT_USER.name || '',
+    })
+  }).catch(function(err){ console.warn('已讀記錄失敗：', err.message); });
 }
 
 /* ── 中文分類 → DOM key 對應表 ── */
@@ -2370,9 +2267,14 @@ function dcBuildFileList(files) {
   if (!area || !grid) return;
   area.innerHTML = '';
   grid.innerHTML = '';
-  var isAdmin = CURRENT_USER && (CURRENT_USER.role === 'admin' || CURRENT_USER.role === 'boss');
+  // 刪除文件：僅 admin（boss 唯讀、manager 未開放刪除）
+  var isAdmin = CURRENT_USER && CURRENT_USER.role === 'admin';
   var delBtnHtml  = isAdmin ? '<button class="dc-del-btn" onclick="event.stopPropagation();dcDeleteItem(this)" title="刪除">✕</button>' : '';
   var delCardHtml = isAdmin ? '<button class="dc-card-del-btn" onclick="event.stopPropagation();dcDeleteCard(this)" title="刪除">✕</button>' : '';
+  // parttime 看不到「行政表單」分類的文件
+  if (CURRENT_USER && CURRENT_USER.role === 'parttime') {
+    files = files.filter(function(f){ return f.cat !== '行政表單'; });
+  }
 
   // 更新分類計數（用中文→key對應）
   var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,other:0};
@@ -2588,15 +2490,19 @@ function dcSwitch(el, cat) {
   dcPage = 1;
   var t = document.getElementById('dc-title');
   if (t) t.textContent = dcCatLabels[cat] || cat;
-  // 全部文件不允許上傳，其餘分類才開放
+  // 全部文件不允許上傳，其餘分類才開放；且需具備上傳權限（admin / manager）
   var uploadBtn = document.getElementById('dc-upload-btn');
   if (uploadBtn) {
-    if (cat === 'all' || !cat) {
+    if (!DC_CAN_UPLOAD) {
+      uploadBtn.style.display = 'none';
+    } else if (cat === 'all' || !cat) {
+      uploadBtn.style.display = '';
       uploadBtn.disabled = true;
       uploadBtn.style.opacity = '0.4';
       uploadBtn.style.cursor  = 'not-allowed';
       uploadBtn.title = '請選擇分類後再上傳';
     } else {
+      uploadBtn.style.display = '';
       uploadBtn.disabled = false;
       uploadBtn.style.opacity = '1';
       uploadBtn.style.cursor  = 'pointer';
@@ -2730,34 +2636,9 @@ function fmtDT(v) {
 /* ── 只格式化日期（不含時間），處理各種格式包括 Date.toString() ── */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ── 附件狀態徽章 helper ── */
 
 /* ══ 手機版：通用卡片列表渲染 ══ */
-
-
-
-
-
-
-
 
 /* ════════════════════════════════════════
    登入 / 帳號管理系統
@@ -2791,9 +2672,9 @@ var ROLE_PAGES = {
   parttime: ['doccenter','extraops'],
   employee: ['doccenter'],
   fulltime: ['doccenter','extraops'],
-  manager:  ['doccenter','extraops','workhour','labor','main'],
-  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
-  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  manager:  ['doccenter','extraops','workhour','labor','main','readlist'],
+  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
+  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
 };
 
 var ROLE_SIDEBAR_MAP = {
@@ -2801,10 +2682,81 @@ var ROLE_SIDEBAR_MAP = {
   parttime: ['doccenter','extraops'],
   employee: ['doccenter'],
   fulltime: ['doccenter','extraops'],
-  manager:  ['doccenter','extraops','workhour','labor','main'],
-  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
-  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr'],
+  manager:  ['doccenter','extraops','workhour','labor','main','readlist'],
+  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
+  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
 };
+
+/* ══ 已讀名單 ══ */
+var RL_DATA = [];
+function loadReadList() {
+  var tbody = document.getElementById('rl-tbody');
+  if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr>';
+  var url = GAS_URL + '?action=getReadList&v=' + Date.now();
+  fetch(url, { method:'GET', mode:'cors', cache:'no-store' })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if (!data.success) { if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ ' + (data.error||'載入失敗') + '</td></tr>'; return; }
+      RL_DATA = data.list || [];
+      renderReadListTable();
+    })
+    .catch(function(err){
+      if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ 載入失敗（' + err.message + '）</td></tr>';
+    });
+}
+
+function renderReadListTable() {
+  var tbody  = document.getElementById('rl-tbody');
+  var search = (document.getElementById('rl-search')||{}).value || '';
+  var v = search.toLowerCase();
+  if (!tbody) return;
+
+  var list = RL_DATA.filter(function(r){
+    if (!v) return true;
+    return (r.name||'').toLowerCase().indexOf(v) > -1 || (r.cat||'').toLowerCase().indexOf(v) > -1;
+  });
+
+  var countEl = document.getElementById('rl-count');
+  if (countEl) countEl.textContent = list.length;
+
+  var mobileList = document.getElementById('rl-mobile-list');
+  if (mobileList) mobileList.innerHTML = '';
+
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--color-text-muted);">尚無公告紀錄</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = '';
+  list.forEach(function(r, i){
+    var tr = document.createElement('tr');
+    if (i%2) tr.style.background = 'var(--color-bg-table-alt)';
+    tr.innerHTML =
+      '<td style="text-align:center;font-size:12px;">' + (r.cat||'—') + '</td>' +
+      '<td style="font-weight:500;">' + (r.name||'—') +
+        '<div style="font-size:11px;color:var(--color-text-muted);">期限：' + (r.deadline||'—') + '</div></td>' +
+      '<td style="font-size:12px;color:#2e7d32;">' + (r.readNames || '—') + '</td>' +
+      '<td style="font-size:12px;color:#c62828;">' + (r.unreadNames || '—') + '</td>' +
+      '<td style="text-align:center;font-weight:600;color:#2e7d32;">' + r.readCount + '</td>' +
+      '<td style="text-align:center;font-weight:600;color:#c62828;">' + r.unreadCount + '</td>';
+    tbody.appendChild(tr);
+
+    if (mobileList) {
+      var card = document.createElement('div');
+      card.className = 'acc-mobile-card';
+      card.innerHTML =
+        '<div class="acc-mobile-card-header"><div>' +
+          '<div class="acc-mobile-card-name">' + (r.name||'—') + '</div>' +
+          '<div class="acc-mobile-card-mail">' + (r.cat||'') + '　期限：' + (r.deadline||'—') + '</div>' +
+        '</div></div>' +
+        '<div class="acc-mobile-card-row" style="flex-direction:column;align-items:flex-start;gap:4px;">' +
+          '<span style="font-size:12px;color:#2e7d32;">✅ 已讀（' + r.readCount + '）：' + (r.readNames||'—') + '</span>' +
+          '<span style="font-size:12px;color:#c62828;">⏳ 未讀（' + r.unreadCount + '）：' + (r.unreadNames||'—') + '</span>' +
+        '</div>';
+      mobileList.appendChild(card);
+    }
+  });
+}
 
 /* ══ 意見回饋 & 問題回報 管理 ══ */
 var FB_DATA = [];
@@ -3115,7 +3067,6 @@ function markFbrpDone() {
 
 
 function initAuth() {
-  /* ====== [暫時停用 START] 原始登入驗證邏輯，預覽結束後請刪除下方「暫時預覽用」區塊並取消這段註解 ======
   // 立即顯示遮罩（確保未登入狀態不可操作）
   applyBlur(true);
   document.getElementById('loginOverlay').style.display = 'flex';
@@ -3135,11 +3086,6 @@ function initAuth() {
   applyPermissions('guest');
   applyBlur(true);
   openLoginModal();
-  ====== [暫時停用 END] ====== */
-
-  // ---- [暫時預覽用] 略過登入驗證，直接以 admin 角色身分進入，方便檢視版面 ----
-  CURRENT_USER = { mail:'preview@demo.com', name:'預覽帳號', team:'人資部', title:'人資專員', role:'admin' };
-  onLoginSuccess(CURRENT_USER, true);
 }
 
 /* ══ 執行登入 ══ */
@@ -3154,11 +3100,11 @@ function testGasConnection() {
     .then(function(r){ return r.json(); })
     .then(function(d){
       errEl.style.color = '#2e7d32';
-      errEl.textContent = '✅ GAS 連線正常！時間戳：' + (d._ts || '—');
+      errEl.textContent = '✅ GAS 連線正常！';
     })
     .catch(function(err){
       errEl.style.color = '#c62828';
-      errEl.textContent = '❌ 無法連線 GAS：' + (err.message || '未知錯誤') + '。請確認已重新部署且設定為「所有人」。';
+      errEl.textContent = '❌ 無法連線 GAS';
     });
 }
 
@@ -3205,7 +3151,7 @@ function doLogin() {
       // 區分連線失敗和 CORS 問題
       var msg = err && err.message ? err.message : '';
       if (msg.indexOf('Failed to fetch') > -1 || msg.indexOf('NetworkError') > -1 || msg === '') {
-        errEl.textContent = 'GAS 連線失敗，請確認：1) GAS 已重新部署新版本 2) 部署設定為「所有人」可存取';
+        errEl.textContent = 'GAS 連線失敗，請確認';
       } else {
         errEl.textContent = '連線失敗：' + msg;
       }
@@ -3300,11 +3246,24 @@ function applyPermissions(role) {
     item.style.cursor        = '';
   });
 
-  // 文件中心新增分類：只有 admin/boss 才顯示
+  // 文件中心新增分類：只有 admin 可以新增
   var dcAddBtn = document.getElementById('dc-add-cat-btn');
   if (dcAddBtn) {
-    dcAddBtn.style.display = (role === 'admin' || role === 'boss') ? '' : 'none';
+    dcAddBtn.style.display = (role === 'admin') ? '' : 'none';
   }
+
+  // 文件中心上傳：只有 admin / manager 可以上傳
+  DC_CAN_UPLOAD = (role === 'admin' || role === 'manager');
+  var upBtn = document.getElementById('dc-upload-btn');
+  if (upBtn) upBtn.style.display = DC_CAN_UPLOAD ? '' : 'none';
+
+  // parttime 看不到文件中心的「行政表單」分類
+  var dcAdminCatItem = document.querySelector('.doccenter-sidebar-item[onclick*="dcSwitch(this,\'admin\')"]');
+  if (dcAdminCatItem) dcAdminCatItem.style.display = (role === 'parttime') ? 'none' : '';
+
+  // boss 為唯讀角色：帳號管理「新增帳號」按鈕隱藏
+  var accAddBtn = document.getElementById('acc-add-btn');
+  if (accAddBtn) accAddBtn.style.display = (role === 'boss') ? 'none' : '';
 
   // sidebar section 標題：若整個 section 的項目都隱藏，則隱藏標題
   document.querySelectorAll('.sidebar-section').forEach(function(sec){
@@ -3622,6 +3581,15 @@ function renderAccTable() {
     var stColor   = a.status==='停用'?'color:#c62828;background:#fce4e4;':'color:#2e7d32;background:#e8f5e9;';
     var tr = document.createElement('tr');
     if(i%2) tr.style.background='var(--color-bg-table-alt)';
+    var isBoss = CURRENT_USER && CURRENT_USER.role === 'boss';
+    var accActionsHtml = isBoss
+      ? '<span style="font-size:11px;color:var(--color-text-muted);">🔒 唯讀</span>'
+      : (
+        '<button data-acc="' + encodeURIComponent(JSON.stringify(a)) + '" onclick="openAccountModal(\'edit\',this.dataset.acc)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid var(--color-border-table);background:#fdfcf9;cursor:pointer;margin-right:3px;">編輯</button>' +
+        '<button data-mail="' + (a.mail||'') + '" onclick="resetPassword(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #ffcc80;background:#fff8e1;color:#7a5000;cursor:pointer;margin-right:3px;">重設密碼</button>' +
+        (a.status==='停用' ? '<button data-mail="'+(a.mail||'')+'" onclick="enableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;cursor:pointer;margin-right:3px;">啟用</button>' : '<button data-mail="'+(a.mail||'')+'" onclick="disableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #ef9a9a;background:#fce4e4;color:#c62828;cursor:pointer;margin-right:3px;">停用</button>') +
+        '<button data-mail="'+(a.mail||'')+'" data-name="'+(a.name||'')+'" onclick="deleteAccount(this.dataset.mail,this.dataset.name)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #d32f2f;background:#fff;color:#d32f2f;cursor:pointer;">🗑</button>'
+      );
     tr.innerHTML =
       '<td style="font-size:12px;">'+(a.mail||'—')+'</td>'+
       '<td style="font-weight:500;">'+(a.name||'—')+'</td>'+
@@ -3630,12 +3598,7 @@ function renderAccTable() {
       '<td style="text-align:center;"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:12px;'+roleStyle+'">'+(ROLE_LABEL[a.role]||a.role)+'</span></td>'+
       '<td style="text-align:center;"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;'+(a.status==='停用'?'color:#c62828;background:#fce4e4;border:1px solid #ef9a9a;':'color:#2e7d32;background:#e8f5e9;border:1px solid #a5d6a7;')+'">'+(a.status==='停用'?'停用':'啟用中')+'</span></td>'+
       '<td style="font-size:11px;color:var(--color-text-muted);text-align:center;font-family:var(--font-mono);">' + formatAccDate(a.createdAt) + '</td>'+
-      '<td style="text-align:center;">' +
-        '<button data-acc="' + encodeURIComponent(JSON.stringify(a)) + '" onclick="openAccountModal(\'edit\',this.dataset.acc)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid var(--color-border-table);background:#fdfcf9;cursor:pointer;margin-right:3px;">編輯</button>' +
-        '<button data-mail="' + (a.mail||'') + '" onclick="resetPassword(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #ffcc80;background:#fff8e1;color:#7a5000;cursor:pointer;margin-right:3px;">重設密碼</button>' +
-        (a.status==='停用' ? '<button data-mail="'+(a.mail||'')+'" onclick="enableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;cursor:pointer;margin-right:3px;">啟用</button>' : '<button data-mail="'+(a.mail||'')+'" onclick="disableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #ef9a9a;background:#fce4e4;color:#c62828;cursor:pointer;margin-right:3px;">停用</button>') +
-        '<button data-mail="'+(a.mail||'')+'" data-name="'+(a.name||'')+'" onclick="deleteAccount(this.dataset.mail,this.dataset.name)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #d32f2f;background:#fff;color:#d32f2f;cursor:pointer;">🗑</button>'
-      '</td>';
+      '<td style="text-align:center;">' + accActionsHtml + '</td>';
     tbody.appendChild(tr);
 
     // 手機版：卡片
@@ -3658,12 +3621,13 @@ function renderAccTable() {
         '<div class="acc-mobile-card-detail" id="acc-card-detail-'+i+'">' +
           '<div style="font-size:11px;color:var(--color-text-muted);">建立：' + formatAccDate(a.createdAt) + '</div>' +
           '<div class="acc-mobile-card-actions">' +
+          (isBoss ? '<span style="font-size:12px;color:var(--color-text-muted);">🔒 唯讀（boss 不可編輯）</span>' :
             '<button data-acc="'+encodeURIComponent(JSON.stringify(a))+'" onclick="openAccountModal(\'edit\',this.dataset.acc)" style="background:#fdfcf9;border-color:var(--color-border-table);">✏️ 編輯</button>' +
             '<button data-mail="'+(a.mail||'')+'" onclick="resetPassword(this.dataset.mail)" style="background:#fff8e1;border-color:#ffcc80;color:#7a5000;">🔑 重設密碼</button>' +
             (a.status==='停用'
               ? '<button data-mail="'+(a.mail||'')+'" onclick="enableAccount(this.dataset.mail)" style="background:#e8f5e9;border-color:#a5d6a7;color:#2e7d32;">✅ 啟用</button>'
               : '<button data-mail="'+(a.mail||'')+'" onclick="disableAccount(this.dataset.mail)" style="background:#fce4e4;border-color:#ef9a9a;color:#c62828;">🚫 停用</button>') +
-            '<button data-mail="'+(a.mail||'')+'" data-name="'+(a.name||'')+'" onclick="deleteAccount(this.dataset.mail,this.dataset.name)" style="background:#fff;border-color:#d32f2f;color:#d32f2f;">🗑 刪除</button>' +
+            '<button data-mail="'+(a.mail||'')+'" data-name="'+(a.name||'')+'" onclick="deleteAccount(this.dataset.mail,this.dataset.name)" style="background:#fff;border-color:#d32f2f;color:#d32f2f;">🗑 刪除</button>') +
           '</div>' +
         '</div>' +
         '<div style="text-align:right;font-size:11px;color:var(--color-text-muted);margin-top:2px;" onclick="toggleAccCard(\'acc-card-detail-'+i+'\',this)">▼ 展開</div>';
