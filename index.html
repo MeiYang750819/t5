@@ -944,7 +944,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .login-field{display:flex;flex-direction:column;gap:5px;}
 .login-label{font-size:12px;font-weight:500;color:var(--color-text-secondary);}
 .login-email-row{display:flex;gap:6px;}
-.login-input{border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 12px;font-family:var(--font-body);font-size:14px;color:var(--color-text-primary);background:#fff;outline:none;width:100%;transition:.15s;}
+.login-input{border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 12px;font-family:var(--font-body);font-size:16px;color:var(--color-text-primary);background:#fff;outline:none;width:100%;transition:.15s;}
 .login-input:focus{border-color:var(--color-gold);box-shadow:0 0 0 3px var(--color-gold-bg);}
 .login-domain{border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 10px;font-family:var(--font-body);font-size:13px;color:var(--color-text-primary);background:#fff;outline:none;cursor:pointer;white-space:nowrap;}
 .login-domain:focus{border-color:var(--color-gold);}
@@ -1575,14 +1575,18 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
           </div>
           <table class="data-table">
             <colgroup>
+              <col style="width:130px;"/>
+              <col style="width:130px;"/>
               <col style="width:90px;"/>
-              <col style="width:200px;"/>
+              <col style="width:160px;"/>
               <col/>
               <col/>
-              <col style="width:70px;"/>
-              <col style="width:70px;"/>
+              <col style="width:60px;"/>
+              <col style="width:60px;"/>
             </colgroup>
             <thead><tr>
+              <th style="text-align:center;">上傳日期</th>
+              <th style="text-align:center;">查閱期限</th>
               <th style="text-align:center;">公告分類</th>
               <th style="text-align:center;">公告名稱</th>
               <th style="text-align:center;">已讀取</th>
@@ -1590,7 +1594,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
               <th style="text-align:center;">已讀</th>
               <th style="text-align:center;">未讀</th>
             </tr></thead>
-            <tbody id="rl-tbody"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr></tbody>
+            <tbody id="rl-tbody"><tr><td colspan="8" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr></tbody>
           </table>
         </div>
         <div id="rl-mobile-list" style="display:none;"></div>
@@ -2111,13 +2115,19 @@ function submitBug() {
   });
 }
 
+
+/* ══ 年度切換 ══ */
+
+/* ══ 全年切換 ══ */
+
+
 /* ══ 分頁 ══ */
 
 
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbyKUDJtiVDmGoq5GSTjFQfVOMtgkvrJyJFiTTttql3Y3a7bEwtE4awcRz8q-SXKRxrU/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbxJm_Wn9uP15gE2yhQ66PGl9FEF4iHckpiCMU0P_qnP429-1E7Bf8V5DL3nyrFJ-Kxy/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -2135,7 +2145,7 @@ var dcPage       = 1;
 var DC_LIST_PER  = 7;
 var DC_GRID_PER  = 12;
 var DC_PER_PAGE  = 12;
-var dcCatLabels  = {all:'全部文件',hr:'人事相關',admin:'行政表單',training:'教育訓練',announce:'企業公告',law:'法規公告',other:'其他事項'};
+var dcCatLabels  = {all:'全部文件',hr:'人事相關',admin:'行政表單',training:'教育訓練',announce:'企業公告',law:'法規公告',meeting:'會議紀錄',other:'其他事項'};
 var dcDlStyle    = 'display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 12px;border-radius:4px;border:1px solid #666;background-color:#555;color:#c9a84c;font-family:var(--font-body);font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;';
 
 /* ── 讀取文件列表（從 GAS）── */
@@ -2161,7 +2171,7 @@ function dcLoadFiles() {
 
 /* ── 重新計算側邊欄分類數量 ── */
 function dcUpdateCounts() {
-  var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,other:0};
+  var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,meeting:0,other:0};
   document.querySelectorAll('#dc-file-area .doccenter-file-item').forEach(function(item){
     var key = item.getAttribute('data-cat') || 'other';
     counts.all++;
@@ -2277,7 +2287,7 @@ function dcBuildFileList(files) {
   }
 
   // 更新分類計數（用中文→key對應）
-  var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,other:0};
+  var counts = {all:0,hr:0,admin:0,training:0,announce:0,law:0,meeting:0,other:0};
   files.forEach(function(f){
     counts.all++;
     var key = dcLabelToKey[f.cat] || 'other';
@@ -2371,6 +2381,15 @@ function dcShowError(msg) {
 
 function dcHandleUpload(input) {
   if (!input.files || !input.files[0]) return;
+
+  // 權限保護（避免被繞過按鈕disable直接觸發）
+  if (!DC_CAN_UPLOAD) { alert('您沒有上傳權限'); input.value=''; return; }
+  if (CURRENT_USER && CURRENT_USER.role === 'manager' && dcCurrentCat !== 'meeting') {
+    alert('主管僅可上傳「會議紀錄」分類');
+    input.value = '';
+    return;
+  }
+
   var file = input.files[0];
 
   // 檔案大小限制 20MB
@@ -2404,7 +2423,8 @@ function dcHandleUpload(input) {
         fileName:  file.name,
         fileData:  base64,
         mimeType:  file.type || 'application/octet-stream',
-        uploader:  '管理者',
+        uploader:  (CURRENT_USER && CURRENT_USER.name) || '管理者',
+        role:      (CURRENT_USER && CURRENT_USER.role) || '',
       })
     })
     .then(function() {
@@ -2491,6 +2511,8 @@ function dcSwitch(el, cat) {
   var t = document.getElementById('dc-title');
   if (t) t.textContent = dcCatLabels[cat] || cat;
   // 全部文件不允許上傳，其餘分類才開放；且需具備上傳權限（admin / manager）
+  // manager 只能上傳「會議紀錄」分類，其餘分類即使是 manager 也不可上傳
+  var managerLocked = (CURRENT_USER && CURRENT_USER.role === 'manager' && cat !== 'meeting');
   var uploadBtn = document.getElementById('dc-upload-btn');
   if (uploadBtn) {
     if (!DC_CAN_UPLOAD) {
@@ -2501,6 +2523,12 @@ function dcSwitch(el, cat) {
       uploadBtn.style.opacity = '0.4';
       uploadBtn.style.cursor  = 'not-allowed';
       uploadBtn.title = '請選擇分類後再上傳';
+    } else if (managerLocked) {
+      uploadBtn.style.display = '';
+      uploadBtn.disabled = true;
+      uploadBtn.style.opacity = '0.4';
+      uploadBtn.style.cursor  = 'not-allowed';
+      uploadBtn.title = '主管僅可上傳「會議紀錄」分類';
     } else {
       uploadBtn.style.display = '';
       uploadBtn.disabled = false;
@@ -2623,13 +2651,13 @@ function fmtDT(v) {
   var s = String(v).trim();
   s = s.replace(/\s*GMT[+\-]\d{4}.*$/i,'').replace(/\s*\(.*\)$/,'').trim();
   var m = s.match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})[\s]?(\d{2}):(\d{2})(?::(\d{2}))?/);
-  if (m) return m[1]+'-'+m[2]+'-'+m[3]+' '+m[4]+':'+m[5]+':'+(m[6]||'00');
+  if (m) return m[1]+'/'+m[2]+'/'+m[3]+' '+m[4]+':'+m[5]+':'+(m[6]||'00');
   var m2 = s.match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})/);
-  if (m2) return m2[1]+'-'+m2[2]+'-'+m2[3];
+  if (m2) return m2[1]+'/'+m2[2]+'/'+m2[3];
   var d = new Date(s);
   if (isNaN(d.getTime())) return s;
   var p = function(n){ return String(n).padStart(2,'0'); };
-  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+  return d.getFullYear()+'/'+p(d.getMonth()+1)+'/'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
 }
 /* ── 起訖格式：YYYY-MM-DD HH:MM ~ YYYY-MM-DD HH:MM ── */
 
@@ -2691,17 +2719,17 @@ var ROLE_SIDEBAR_MAP = {
 var RL_DATA = [];
 function loadReadList() {
   var tbody = document.getElementById('rl-tbody');
-  if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr>';
+  if (tbody) tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--color-text-muted);">⏳ 載入中…</td></tr>';
   var url = GAS_URL + '?action=getReadList&v=' + Date.now();
   fetch(url, { method:'GET', mode:'cors', cache:'no-store' })
     .then(function(res){ return res.json(); })
     .then(function(data){
-      if (!data.success) { if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ ' + (data.error||'載入失敗') + '</td></tr>'; return; }
+      if (!data.success) { if(tbody) tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:#e07070;">⚠ ' + (data.error||'載入失敗') + '</td></tr>'; return; }
       RL_DATA = data.list || [];
       renderReadListTable();
     })
     .catch(function(err){
-      if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ 載入失敗（' + err.message + '）</td></tr>';
+      if (tbody) tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:#e07070;">⚠ 載入失敗（' + err.message + '）</td></tr>';
     });
 }
 
@@ -2723,7 +2751,7 @@ function renderReadListTable() {
   if (mobileList) mobileList.innerHTML = '';
 
   if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--color-text-muted);">尚無公告紀錄</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--color-text-muted);">尚無公告紀錄</td></tr>';
     return;
   }
 
@@ -2732,9 +2760,10 @@ function renderReadListTable() {
     var tr = document.createElement('tr');
     if (i%2) tr.style.background = 'var(--color-bg-table-alt)';
     tr.innerHTML =
+      '<td style="text-align:center;font-size:11px;font-family:var(--font-mono);">' + (r.uploadDate||'—') + '</td>' +
+      '<td style="text-align:center;font-size:11px;font-family:var(--font-mono);">' + (r.deadline||'—') + '</td>' +
       '<td style="text-align:center;font-size:12px;">' + (r.cat||'—') + '</td>' +
-      '<td style="font-weight:500;">' + (r.name||'—') +
-        '<div style="font-size:11px;color:var(--color-text-muted);">期限：' + (r.deadline||'—') + '</div></td>' +
+      '<td style="font-weight:500;">' + (r.name||'—') + '</td>' +
       '<td style="font-size:12px;color:#2e7d32;">' + (r.readNames || '—') + '</td>' +
       '<td style="font-size:12px;color:#c62828;">' + (r.unreadNames || '—') + '</td>' +
       '<td style="text-align:center;font-weight:600;color:#2e7d32;">' + r.readCount + '</td>' +
@@ -2747,7 +2776,7 @@ function renderReadListTable() {
       card.innerHTML =
         '<div class="acc-mobile-card-header"><div>' +
           '<div class="acc-mobile-card-name">' + (r.name||'—') + '</div>' +
-          '<div class="acc-mobile-card-mail">' + (r.cat||'') + '　期限：' + (r.deadline||'—') + '</div>' +
+          '<div class="acc-mobile-card-mail">' + (r.cat||'') + '　上傳：' + (r.uploadDate||'—') + '　期限：' + (r.deadline||'—') + '</div>' +
         '</div></div>' +
         '<div class="acc-mobile-card-row" style="flex-direction:column;align-items:flex-start;gap:4px;">' +
           '<span style="font-size:12px;color:#2e7d32;">✅ 已讀（' + r.readCount + '）：' + (r.readNames||'—') + '</span>' +
@@ -3188,6 +3217,9 @@ function onLoginSuccess(user, silent) {
 
   // 載入文件中心
   if (typeof dcLoadFiles === 'function') dcLoadFiles();
+
+  // 登入後才顯示「加入主畫面」教學（僅顯示一次，之後不再出現）
+  showA2hsModalIfMobile();
 }
 
 /* ══ 套用權限（根據角色顯示/隱藏側邊欄）══ */
@@ -3693,14 +3725,14 @@ function formatAccDate(d) {
   var s = String(d).trim().replace(/\s*GMT[+\-]\d{4}.*$/i,'').replace(/\s*\(.*\)$/,'').trim();
   // 解析 yyyy/mm/dd HH:MM:SS 或 yyyymmdd HH:MM:SS
   var m = s.match(/(\d{4})[\/\-]?(\d{2})[\/\-]?(\d{2})[\s]?(\d{2}):(\d{2})(?::(\d{2}))?/);
-  if (m) return m[1]+'-'+m[2]+'-'+m[3]+' '+m[4]+':'+m[5]+':'+(m[6]||'00');
+  if (m) return m[1]+'/'+m[2]+'/'+m[3]+' '+m[4]+':'+m[5]+':'+(m[6]||'00');
   var m2 = s.match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})/);
-  if (m2) return m2[1]+'-'+m2[2]+'-'+m2[3];
+  if (m2) return m2[1]+'/'+m2[2]+'/'+m2[3];
   // 嘗試 Date 解析
   var dd = new Date(s);
   if (isNaN(dd.getTime())) return s;
   var p = function(n){ return String(n).padStart(2,'0'); };
-  return dd.getFullYear()+'-'+p(dd.getMonth()+1)+'-'+p(dd.getDate())+' '+p(dd.getHours())+':'+p(dd.getMinutes())+':'+p(dd.getSeconds());
+  return dd.getFullYear()+'/'+p(dd.getMonth()+1)+'/'+p(dd.getDate())+' '+p(dd.getHours())+':'+p(dd.getMinutes())+':'+p(dd.getSeconds());
 }
 
 /* ── 停用帳號 ── */
@@ -3895,15 +3927,16 @@ function closeA2hsModal() {
 }
 function showA2hsModalIfMobile() {
   if (!isMobileUA()) return; // 電腦版不跳出
+  if (localStorage.getItem('mys_a2hs_shown')) return; // 已顯示過，之後不再出現
   var ov = document.getElementById('a2hsOverlay');
   if (!ov) return;
   a2hsSwitchTab(/Android/i.test(navigator.userAgent) ? 'android' : 'ios');
   ov.classList.add('open');
+  localStorage.setItem('mys_a2hs_shown', '1');
 }
 
 /* ── 國假兼職判斷：初始化時根據 CURRENT_USER.title 設定顯示 ── */
 
-showA2hsModalIfMobile(); // 手機版：系統載入時先顯示「加入主畫面」教學
 dcLoadFiles();
 applyBlur(true); // 預設模糊，initAuth 登入成功後解除
 // 手機版：sidebar 內的外部連結（target=_blank，不會經過 showPage）點擊後也收合抽屜
