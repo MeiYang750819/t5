@@ -970,10 +970,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
 
 /* 未登入模糊化 */
-/* [暫時停用 START] 未登入時的模糊效果──日後要恢復登入驗證時，
-   把下面這行改回： .app-main-blur { filter: blur(6px); user-select: none; transition: filter .3s; }
-   [暫時停用 END] */
-.app-main-blur { filter: none; user-select: auto; transition: filter .3s; }
+.app-main-blur { filter: blur(6px); user-select: none; transition: filter .3s; }
 
 /* 審核流程 */
 .review-btn{height:28px;padding:0 12px;border-radius:6px;border:1.5px solid;font-family:var(--font-body);font-size:11px;font-weight:600;cursor:pointer;transition:.15s;}
@@ -2127,7 +2124,7 @@ function submitBug() {
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbxJm_Wn9uP15gE2yhQ66PGl9FEF4iHckpiCMU0P_qnP429-1E7Bf8V5DL3nyrFJ-Kxy/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbxdamyL2S3mWJj5-mrshx-2iuiSksKTH0BHoQ-oMAQeSE1oTwhgIg3E8xRsA3SGh4Vw/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -3111,10 +3108,11 @@ function initAuth() {
       sessionStorage.removeItem('mys_user');
     }
   }
-  // 未登入 → 套用訪客限制 + 模糊 + 顯示登入框
+  // 未登入 → 套用訪客限制 + 模糊 + 顯示登入框 + 顯示「加入主畫面」教學
   applyPermissions('guest');
   applyBlur(true);
   openLoginModal();
+  showA2hsModalIfMobile();
 }
 
 /* ══ 執行登入 ══ */
@@ -3218,8 +3216,8 @@ function onLoginSuccess(user, silent) {
   // 載入文件中心
   if (typeof dcLoadFiles === 'function') dcLoadFiles();
 
-  // 登入後才顯示「加入主畫面」教學（僅顯示一次，之後不再出現）
-  showA2hsModalIfMobile();
+  // 登入成功 → 隱藏「加入主畫面」教學（未登入時才顯示）
+  hideA2hsModal();
 }
 
 /* ══ 套用權限（根據角色顯示/隱藏側邊欄）══ */
@@ -3514,8 +3512,8 @@ function doLogout() {
   applyPermissions('guest');
   // 立即模糊化
   applyBlur(true);
-  // 顯示登入框
-  setTimeout(function(){ openLoginModal(); }, 150);
+  // 顯示登入框 + 重新顯示「加入主畫面」教學（登出後即恢復未登入狀態）
+  setTimeout(function(){ openLoginModal(); showA2hsModalIfMobile(); }, 150);
 }
 
 /* ══ User Menu 開關 ══ */
@@ -3927,12 +3925,14 @@ function closeA2hsModal() {
 }
 function showA2hsModalIfMobile() {
   if (!isMobileUA()) return; // 電腦版不跳出
-  if (localStorage.getItem('mys_a2hs_shown')) return; // 已顯示過，之後不再出現
   var ov = document.getElementById('a2hsOverlay');
   if (!ov) return;
   a2hsSwitchTab(/Android/i.test(navigator.userAgent) ? 'android' : 'ios');
   ov.classList.add('open');
-  localStorage.setItem('mys_a2hs_shown', '1');
+}
+function hideA2hsModal() {
+  var ov = document.getElementById('a2hsOverlay');
+  if (ov) ov.classList.remove('open');
 }
 
 /* ── 國假兼職判斷：初始化時根據 CURRENT_USER.title 設定顯示 ── */
