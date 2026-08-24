@@ -1078,6 +1078,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    ============================================================ */
 @media (max-width: 768px) {
 
+  /* ── 防止手機瀏覽器聚焦輸入框時自動放大（iOS/Android 對 <16px 字體的輸入框會自動縮放）── */
+  input, select, textarea { font-size: 16px !important; }
+
   /* ── Header：強制單排顯示（標題＋意見欄＋回報問題＋登入都在同一排）── */
   .app-header{ height:auto; min-height:var(--header-height); padding:8px 10px; flex-wrap:nowrap; gap:6px; overflow-x:auto; }
   .header-subtitle{ display:none; }
@@ -1210,16 +1213,18 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   }
   .doccenter-file-list{ gap:10px; }
 
-  /* ── 表格隱藏 → 卡片顯示（申請類 6 頁 + 帳號管理）── */
+  /* ── 表格隱藏 → 卡片顯示（申請類 6 頁 + 帳號管理 + 已讀名單）── */
   #page-feedback-mgr .table-section table,
   #page-feedback-mgr .table-section .table-footer,
   #page-report-mgr .table-section table,
   #page-report-mgr .table-section .table-footer,
+  #page-readlist .table-section table,
+  #page-readlist .table-section .table-footer,
   #acc-desktop-table table,
   #acc-desktop-table .table-footer
   { display:none !important; }
 
-  #fb-mobile-list, #rp-mobile-list, #acc-mobile-list
+  #fb-mobile-list, #rp-mobile-list, #rl-mobile-list, #acc-mobile-list
   { display:block !important; }
 
 }
@@ -1320,7 +1325,13 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>預設密碼為<b>手機號碼末 5 碼</b></div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>預設密碼為<b>手機號碼末 6 碼</b></div>
+      </div>
+      <div class="a2hs-step">
+        <div class="a2hs-step-visual">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5"/><circle cx="12" cy="17" r=".6" fill="#c9a84c"/></svg>
+        </div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">4</span>還是看不懂？請<b>禮貌性詢問人資承辦</b></div>
       </div>
     </div>
 
@@ -2169,7 +2180,7 @@ function submitBug() {
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbwE4jqhuqVSK92IUFst5g0feWSxoelPIlPMixd3ReuPf71dngdgqgQR5YLqdd9y2hk/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyg4RChpSbuhLGdTQ1kIUn90o1j5RRxvbIklGVavyyX6T4qHXRcZY1fHWVl3QOJoM0c/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -2813,17 +2824,24 @@ function renderReadListTable() {
 
     if (mobileList) {
       var card = document.createElement('div');
-      card.className = 'acc-mobile-card';
+      card.className = 'mob-info-card';
+      var detailId = 'rl-card-'+i;
       card.innerHTML =
-        '<div class="acc-mobile-card-header"><div>' +
-          '<div class="acc-mobile-card-name">' + (r.name||'—') + '</div>' +
-          '<div class="acc-mobile-card-mail">' + (r.cat||'') + '</div>' +
-          '<div class="acc-mobile-card-mail">上傳：' + (r.uploadDate||'—') + '　期限：' + (r.deadline||'—') + '</div>' +
-        '</div></div>' +
-        '<div class="acc-mobile-card-row" style="gap:8px;">' +
-          '<button data-fid="'+fidAttr+'" onclick="rlShowNames(decodeURIComponent(this.dataset.fid),\'read\')" style="flex:1;font-size:12px;font-weight:600;padding:8px 10px;border-radius:8px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;cursor:pointer;">✅ 已讀 ' + r.readCount + ' 人 ›</button>' +
-          '<button data-fid="'+fidAttr+'" onclick="rlShowNames(decodeURIComponent(this.dataset.fid),\'unread\')" style="flex:1;font-size:12px;font-weight:600;padding:8px 10px;border-radius:8px;border:1px solid #ef9a9a;background:#fce4e4;color:#c62828;cursor:pointer;">⏳ 未讀 ' + r.unreadCount + ' 人 ›</button>' +
-        '</div>';
+        '<div class="mic-header">' +
+          '<div>' +
+            '<div class="mic-type">'+(r.cat||'—')+'</div>' +
+            '<div class="mic-name">'+(r.name||'—')+'</div>' +
+          '</div>' +
+          '<span class="mic-status" style="background:#e8f5e9;color:#2e7d32;">已讀 '+r.readCount+'</span>' +
+        '</div>' +
+        '<div class="mic-preview mic-time">🕐 上傳：'+(r.uploadDate||'—')+'　期限：'+(r.deadline||'—')+'</div>' +
+        '<div class="mic-detail" id="'+detailId+'">' +
+          '<div class="mic-actions">' +
+            '<button class="mic-btn" data-fid="'+fidAttr+'" onclick="rlShowNames(decodeURIComponent(this.dataset.fid),\'read\')" style="border-color:#a5d6a7;background:#e8f5e9;color:#2e7d32;">✅ 已讀 '+r.readCount+' 人 ›</button>' +
+            '<button class="mic-btn" data-fid="'+fidAttr+'" onclick="rlShowNames(decodeURIComponent(this.dataset.fid),\'unread\')" style="border-color:#ef9a9a;background:#fce4e4;color:#c62828;">⏳ 未讀 '+r.unreadCount+' 人 ›</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="mic-toggle" onclick="toggleMobInfoCard(\''+detailId+'\',this)">▼ 展開</div>';
       mobileList.appendChild(card);
     }
   });
