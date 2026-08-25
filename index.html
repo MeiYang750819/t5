@@ -1078,8 +1078,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    ============================================================ */
 @media (max-width: 768px) {
 
-  /* ── 防止手機瀏覽器聚焦輸入框時自動放大（iOS/Android 對 <16px 字體的輸入框會自動縮放）── */
-  input, select, textarea { font-size: 16px !important; }
+  /* ── 防止手機瀏覽器聚焦輸入框時自動放大：只在「聚焦當下」套用16px（iOS 判斷放大與否的當下字級），
+     平常（未聚焦）維持原本較小的字體，畫面文字才不會看起來過大 ── */
+  input:focus, textarea:focus, select:focus { font-size: 16px !important; }
 
   /* ── Header：強制單排顯示（標題＋意見欄＋回報問題＋登入都在同一排）── */
   .app-header{ height:auto; min-height:var(--header-height); padding:8px 10px; flex-wrap:nowrap; gap:6px; overflow-x:auto; }
@@ -1923,13 +1924,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
         </div>
         <div style="display:flex;flex-direction:column;gap:5px;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">職稱</label>
-    <select class="filter-select" id="acc-title" style="height:36px;">
-      <option value="">請選擇</option>
-      <option value="正職">正職</option>
-      <option value="兼職">兼職</option>
-      <option value="臨時工">臨時工</option>
-      <option value="打雜的">打雜的</option>
-    </select>
+    <input class="form-input" id="acc-title" type="text" placeholder="請輸入職稱（如：正職、兼職、臨時工…）"/>
         </div>
       </div>
 
@@ -2033,12 +2028,19 @@ function showPage(pageId, el) {
   document.querySelectorAll('.page-section').forEach(function(s) { s.classList.remove('active'); });
   var t = document.getElementById('page-' + pageId);
   if (t) t.classList.add('active');
-  // 切換頁面時捲回頂端（rAF 確保 DOM 更新後再設定）
+  // 切換頁面時捲回頂端（多個可能的捲動容器都重置，避免手機版切頁後
+  // 因為承接了上一頁的捲動位置，導致頂端的搜尋框被捲到看不見）
   var appMain = document.querySelector('.app-main');
-  if (appMain) {
-    appMain.scrollTop = 0;
-    requestAnimationFrame(function(){ appMain.scrollTop = 0; });
+  function resetScrollTops() {
+    if (appMain) appMain.scrollTop = 0;
+    if (t) t.scrollTop = 0;
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
+  resetScrollTops();
+  requestAnimationFrame(resetScrollTops);
+  setTimeout(resetScrollTops, 50);
   document.querySelectorAll('.sidebar-nav-item:not(.external)').forEach(function(i) { i.classList.remove('active'); });
   if (el) {
     el.classList.add('active');
