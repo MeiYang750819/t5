@@ -311,7 +311,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 /* ============================================================
    主內容
    ============================================================ */
-.app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
+.app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
 /* 文件中心 / 數據分析 頁面貼滿邊（無 padding）*/
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
 .page-section.active{display:flex;flex-direction:column;}
@@ -2023,24 +2023,30 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
 
 /* ══ 右側介面跳轉 ══ */
+/* ── 重置所有可能的捲動容器到最頂端（避免手機版切頁/非同步資料載入後，
+   搜尋框因為捲動位置偏移而被捲到看不見）── */
+window.__resetScrollTops = function() {
+  var appMain = document.querySelector('.app-main');
+  var active  = document.querySelector('.page-section.active');
+  if (appMain) appMain.scrollTop = 0;
+  if (active)  active.scrollTop = 0;
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+};
+
 function showPage(pageId, el) {
   if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
   document.querySelectorAll('.page-section').forEach(function(s) { s.classList.remove('active'); });
   var t = document.getElementById('page-' + pageId);
   if (t) t.classList.add('active');
   // 切換頁面時捲回頂端（多個可能的捲動容器都重置，避免手機版切頁後
-  // 因為承接了上一頁的捲動位置，導致頂端的搜尋框被捲到看不見）
-  var appMain = document.querySelector('.app-main');
-  function resetScrollTops() {
-    if (appMain) appMain.scrollTop = 0;
-    if (t) t.scrollTop = 0;
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }
-  resetScrollTops();
-  requestAnimationFrame(resetScrollTops);
-  setTimeout(resetScrollTops, 50);
+  // 因為承接了上一頁的捲動位置，或非同步資料載入時瀏覽器自動調整捲動位置，
+  // 導致頂端的搜尋框被捲到看不見）
+  window.__resetScrollTops();
+  requestAnimationFrame(window.__resetScrollTops);
+  setTimeout(window.__resetScrollTops, 50);
+  setTimeout(window.__resetScrollTops, 400); // 額外延遲一次，涵蓋非同步資料載入完成、內容插入後可能造成的捲動位移
   document.querySelectorAll('.sidebar-nav-item:not(.external)').forEach(function(i) { i.classList.remove('active'); });
   if (el) {
     el.classList.add('active');
@@ -2782,6 +2788,7 @@ function loadReadList() {
       if (!data.success) { if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ ' + (data.error||'載入失敗') + '</td></tr>'; return; }
       RL_DATA = data.list || [];
       renderReadListTable();
+      window.__resetScrollTops();
     })
     .catch(function(err){
       if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ 載入失敗（' + err.message + '）</td></tr>';
@@ -2914,6 +2921,7 @@ function loadFeedbackMgr() {
       });
       updateFbStats();
       renderFbTable();
+      window.__resetScrollTops();
     })
     .catch(function(err){
       if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:28px;color:#f44336;">連線失敗：'+(err.message||'')+'<br><small style="color:#999;">請確認 GAS 已部署並在 doGet 加入 getFeedbacks 路由</small></td></tr>';
@@ -2948,6 +2956,7 @@ function loadReportMgr() {
       });
       updateRpStats();
       renderRpTable();
+      window.__resetScrollTops();
     })
     .catch(function(err){
       if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:28px;color:#f44336;">連線失敗：'+(err.message||'')+'<br><small style="color:#999;">請確認 GAS 已部署並在 doGet 加入 getReports 路由</small></td></tr>';
@@ -3652,6 +3661,7 @@ function loadAccounts() {
       ACCOUNTS_DATA = data.accounts || [];
       updateAccStats();
       renderAccTable();
+      window.__resetScrollTops();
     })
     .catch(function(err){
       // no-cors mode returns opaque response → try re-fetch in no-cors mode as fallback
