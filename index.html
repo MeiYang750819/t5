@@ -1543,9 +1543,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
       <div class="page-section" id="page-feedback-mgr" style="gap:var(--space-4);">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-          <div class="stat-card bg-total"><span class="stat-card-label">總計</span><div class="stat-card-value-row"><span class="stat-card-value" id="fb-total">0</span><span class="stat-card-unit">筆</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">待處理</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="fb-pending">0</span><span class="stat-card-unit">筆</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">已處理</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="fb-done">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-total" style="cursor:pointer;" onclick="fbFilterByStat('')"><span class="stat-card-label">總計</span><div class="stat-card-value-row"><span class="stat-card-value" id="fb-total">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="fbFilterByStat('待處理')"><span class="stat-card-label">待處理</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="fb-pending">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="fbFilterByStat('已處理')"><span class="stat-card-label">已處理</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="fb-done">0</span><span class="stat-card-unit">筆</span></div></div>
         </div>
         <div class="table-section">
           <div class="toolbar">
@@ -1579,9 +1579,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
       <!-- ════ 問題回報管理 ════ -->
       <div class="page-section" id="page-report-mgr" style="gap:var(--space-4);">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-          <div class="stat-card bg-total"><span class="stat-card-label">總計</span><div class="stat-card-value-row"><span class="stat-card-value" id="rp-total">0</span><span class="stat-card-unit">筆</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">待處理</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="rp-pending">0</span><span class="stat-card-unit">筆</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">已處理</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="rp-done">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-total" style="cursor:pointer;" onclick="rpFilterByStat('')"><span class="stat-card-label">總計</span><div class="stat-card-value-row"><span class="stat-card-value" id="rp-total">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rpFilterByStat('待處理')"><span class="stat-card-label">待處理</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="rp-pending">0</span><span class="stat-card-unit">筆</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rpFilterByStat('已處理')"><span class="stat-card-label">已處理</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="rp-done">0</span><span class="stat-card-unit">筆</span></div></div>
         </div>
         <div class="table-section">
           <div class="toolbar">
@@ -1614,11 +1614,30 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
       <!-- ════ 已讀名單 ════ -->
       <div class="page-section" id="page-readlist" style="gap:var(--space-4);">
-        <div class="toolbar" style="background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
-          <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
-          <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rl-count">0</span> 筆</span>
+        <!-- 儀表板：依分類統計公告數（點擊可篩選下方列表）-->
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('人事相關')"><span class="stat-card-label">人事</span><div class="stat-card-value-row"><span class="stat-card-value" id="rl-cnt-hr">0</span><span class="stat-card-unit">則</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('教育訓練')"><span class="stat-card-label">訓練</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="rl-cnt-training">0</span><span class="stat-card-unit">則</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('企業公告')"><span class="stat-card-label">公告</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="rl-cnt-announce">0</span><span class="stat-card-unit">則</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('法規公告')"><span class="stat-card-label">法規</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#7b1fa2;" id="rl-cnt-law">0</span><span class="stat-card-unit">則</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('會議紀錄')"><span class="stat-card-label">會議</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#00695c;" id="rl-cnt-meeting">0</span><span class="stat-card-unit">則</span></div></div>
+          <div class="stat-card bg-reject-grp" style="cursor:pointer;" onclick="rlFilterByCat('其他')"><span class="stat-card-label">其他</span><div class="stat-card-value-row"><span class="stat-card-value red" id="rl-cnt-other">0</span><span class="stat-card-unit">則</span></div></div>
         </div>
+
         <div class="table-section">
+          <div class="toolbar">
+            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
+            <select class="filter-select" id="rl-cat-filter" onchange="renderReadListTable()">
+              <option value="">全部分類</option>
+              <option value="人事相關">人事</option>
+              <option value="教育訓練">訓練</option>
+              <option value="企業公告">公告</option>
+              <option value="法規公告">法規</option>
+              <option value="會議紀錄">會議</option>
+              <option value="其他">其他</option>
+            </select>
+            <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rl-count">0</span> 筆</span>
+          </div>
           <table class="data-table">
             <colgroup>
               <col style="width:170px;"/>
@@ -1805,39 +1824,37 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
           <button class="btn" onclick="openAccountModal('add')" id="acc-add-btn" style="display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;">＋ 新增帳號</button>
         </div>
 
-        <!-- 統計列：總帳號=兼職+正職+主管+營運 -->
+        <!-- 統計列：總帳號=兼職+正職+主管+營運（點擊可篩選下方列表）-->
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
-          <div class="stat-card bg-total"><span class="stat-card-label">總帳號數</span><div class="stat-card-value-row"><span class="stat-card-value" id="acc-total">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">兼職</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#e65100;" id="acc-pt">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">正職</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="acc-ft">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">主管</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="acc-mgr">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-progress"><span class="stat-card-label">營運</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#7b1fa2;" id="acc-ops">0</span><span class="stat-card-unit">人</span></div></div>
-          <div class="stat-card bg-reject-grp"><span class="stat-card-label">已停用</span><div class="stat-card-value-row"><span class="stat-card-value red" id="acc-dis">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-total" style="cursor:pointer;" onclick="accFilterByStat('')"><span class="stat-card-label">總帳號數</span><div class="stat-card-value-row"><span class="stat-card-value" id="acc-total">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('parttime')"><span class="stat-card-label">兼職</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#e65100;" id="acc-pt">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('fulltime')"><span class="stat-card-label">正職</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="acc-ft">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('manager')"><span class="stat-card-label">主管</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="acc-mgr">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('admin')"><span class="stat-card-label">營運</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#7b1fa2;" id="acc-ops">0</span><span class="stat-card-unit">人</span></div></div>
+          <div class="stat-card bg-reject-grp" style="cursor:pointer;" onclick="accFilterByStat('disabled')"><span class="stat-card-label">已停用</span><div class="stat-card-value-row"><span class="stat-card-value red" id="acc-dis">0</span><span class="stat-card-unit">人</span></div></div>
         </div>
 
-        <!-- 搜尋 / 篩選（獨立於表格容器之外，桌機/手機都會顯示）-->
-        <div class="toolbar" style="background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
-          <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable()"/>
+        <!-- 表格（搜尋/篩選與表格同屬一個版型區塊，跟意見回饋／問題回報一致）-->
+        <div class="table-section" id="acc-desktop-table">
+          <div class="toolbar">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable()"/>
+            </div>
+            <select class="filter-select" id="acc-role-filter" onchange="renderAccTable()">
+              <option value="">全部角色</option>
+              <option value="boss">boss</option>
+              <option value="admin">admin</option>
+              <option value="manager">manager</option>
+              <option value="fulltime">fulltime</option>
+              <option value="parttime">parttime</option>
+            </select>
+            <select class="filter-select" id="acc-status-filter" onchange="renderAccTable()">
+              <option value="">全部狀態</option>
+              <option value="啟用">啟用</option>
+              <option value="停用">停用</option>
+            </select>
           </div>
-          <select class="filter-select" id="acc-role-filter" onchange="renderAccTable()">
-            <option value="">全部角色</option>
-            <option value="boss">boss</option>
-            <option value="admin">admin</option>
-            <option value="manager">manager</option>
-            <option value="fulltime">fulltime</option>
-            <option value="parttime">parttime</option>
-          </select>
-          <select class="filter-select" id="acc-status-filter" onchange="renderAccTable()">
-            <option value="">全部狀態</option>
-            <option value="啟用">啟用</option>
-            <option value="停用">停用</option>
-          </select>
-        </div>
-
-        <!-- 表格 -->
-        <div class="table-section" id="acc-desktop-table" style="border-top:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
           <table class="data-table">
             <colgroup>
               <col style="width:250px;"/><col style="width:150px;"/><col style="width:150px;"/><col style="width:150px;"/>
@@ -2190,7 +2207,7 @@ function submitBug() {
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbyg4RChpSbuhLGdTQ1kIUn90o1j5RRxvbIklGVavyyX6T4qHXRcZY1fHWVl3QOJoM0c/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyjVWTd_bPUS53MvJGwM95uDpcPAMKDV2_QlELymGqZB8zmQ12pvJBGx9uSlbpo5Rfu/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -2789,6 +2806,7 @@ function loadReadList() {
     .then(function(data){
       if (!data.success) { if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:#e07070;">⚠ ' + (data.error||'載入失敗') + '</td></tr>'; return; }
       RL_DATA = data.list || [];
+      updateRlStats();
       renderReadListTable();
       window.__resetScrollTops();
     })
@@ -2797,13 +2815,39 @@ function loadReadList() {
     });
 }
 
+/* ── 儀表板統計：依分類計算公告數 ── */
+function updateRlStats() {
+  var counts = {'人事相關':0,'教育訓練':0,'企業公告':0,'法規公告':0,'會議紀錄':0,'其他':0};
+  RL_DATA.forEach(function(r){
+    if (counts.hasOwnProperty(r.cat)) counts[r.cat]++;
+  });
+  var g = function(id){ return document.getElementById(id); };
+  if (g('rl-cnt-hr'))       g('rl-cnt-hr').textContent       = counts['人事相關'];
+  if (g('rl-cnt-training')) g('rl-cnt-training').textContent = counts['教育訓練'];
+  if (g('rl-cnt-announce')) g('rl-cnt-announce').textContent = counts['企業公告'];
+  if (g('rl-cnt-law'))      g('rl-cnt-law').textContent      = counts['法規公告'];
+  if (g('rl-cnt-meeting'))  g('rl-cnt-meeting').textContent  = counts['會議紀錄'];
+  if (g('rl-cnt-other'))    g('rl-cnt-other').textContent    = counts['其他'];
+}
+
+/* ── 點擊儀表板分類卡 → 篩選下方列表 ── */
+function rlFilterByCat(cat) {
+  var catF = document.getElementById('rl-cat-filter');
+  if (catF) catF.value = cat;
+  renderReadListTable();
+  var section = document.querySelector('#page-readlist .table-section') || document.getElementById('rl-mobile-list');
+  if (section && section.scrollIntoView) section.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
 function renderReadListTable() {
   var tbody  = document.getElementById('rl-tbody');
   var search = (document.getElementById('rl-search')||{}).value || '';
+  var catF   = (document.getElementById('rl-cat-filter')||{}).value || '';
   var v = search.toLowerCase();
   if (!tbody) return;
 
   var list = RL_DATA.filter(function(r){
+    if (catF && r.cat !== catF) return false;
     if (!v) return true;
     return (r.name||'').toLowerCase().indexOf(v) > -1 || (r.cat||'').toLowerCase().indexOf(v) > -1;
   });
@@ -3005,6 +3049,15 @@ function toggleMobInfoCard(id, el) {
   if (el) el.textContent = d.classList.contains('open') ? '▲ 收起' : '▼ 展開';
 }
 
+/* ── 點擊意見回饋儀表板統計卡 → 篩選下方列表 ── */
+function fbFilterByStat(status) {
+  var sf = document.getElementById('fb-status-filter');
+  if (sf) sf.value = status;
+  renderFbTable();
+  var section = document.querySelector('#page-feedback-mgr .table-section') || document.getElementById('fb-mobile-list');
+  if (section && section.scrollIntoView) section.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
 function renderFbTable() {
   var tbody=document.getElementById('fb-tbody'); if(!tbody) return;
   var search=((document.getElementById('fb-search')||{}).value||'').toLowerCase();
@@ -3072,6 +3125,15 @@ function renderFbTable() {
       mList.appendChild(card);
     }
   });
+}
+
+/* ── 點擊問題回報儀表板統計卡 → 篩選下方列表 ── */
+function rpFilterByStat(status) {
+  var sf = document.getElementById('rp-status-filter');
+  if (sf) sf.value = status;
+  renderRpTable();
+  var section = document.querySelector('#page-report-mgr .table-section') || document.getElementById('rp-mobile-list');
+  if (section && section.scrollIntoView) section.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
 function renderRpTable() {
@@ -3694,6 +3756,23 @@ function updateAccStats() {
 }
 
 /* ── 渲染表格 ── */
+/* ── 點擊帳號管理儀表板統計卡 → 篩選下方列表 ── */
+function accFilterByStat(kind) {
+  var roleF   = document.getElementById('acc-role-filter');
+  var statusF = document.getElementById('acc-status-filter');
+  if (!roleF || !statusF) return;
+  if (kind === '') {
+    roleF.value = ''; statusF.value = '';
+  } else if (kind === 'disabled') {
+    roleF.value = ''; statusF.value = '停用';
+  } else {
+    roleF.value = kind; statusF.value = '';
+  }
+  renderAccTable();
+  var section = document.getElementById('acc-desktop-table') || document.getElementById('acc-mobile-list');
+  if (section && section.scrollIntoView) section.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
 function renderAccTable() {
   var tbody  = document.getElementById('acc-tbody');
   var search = (document.getElementById('acc-search')||{}).value||'';
@@ -3731,6 +3810,9 @@ function renderAccTable() {
         (a.status==='停用' ? '<button data-mail="'+(a.mail||'')+'" onclick="enableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;cursor:pointer;margin-right:3px;">啟用</button>' : '<button data-mail="'+(a.mail||'')+'" onclick="disableAccount(this.dataset.mail)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #ef9a9a;background:#fce4e4;color:#c62828;cursor:pointer;margin-right:3px;">停用</button>') +
         '<button data-mail="'+(a.mail||'')+'" data-name="'+(a.name||'')+'" onclick="deleteAccount(this.dataset.mail,this.dataset.name)" style="font-size:11px;padding:3px 10px;border-radius:5px;border:1px solid #d32f2f;background:#fff;color:#d32f2f;cursor:pointer;">🗑</button>'
       );
+    var loginBadge = a.firstLoginAt
+      ? '<span style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;color:#2e7d32;background:#e8f5e9;border:1px solid #a5d6a7;white-space:nowrap;">✅ 已登入過</span>'
+      : '<span style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;color:#9a9482;background:#f0ede3;border:1px solid #ddd6c4;white-space:nowrap;">⭘ 尚未登入</span>';
     tr.innerHTML =
       '<td style="font-size:12px;">'+(a.mail||'—')+'</td>'+
       '<td style="font-weight:500;">'+(a.name||'—')+'</td>'+
@@ -3738,7 +3820,7 @@ function renderAccTable() {
       '<td style="text-align:center;font-size:12px;">'+(a.title||'—')+'</td>'+
       '<td style="text-align:center;"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:12px;'+roleStyle+'">'+(ROLE_LABEL[a.role]||a.role)+'</span></td>'+
       '<td style="text-align:center;"><span style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;'+(a.status==='停用'?'color:#c62828;background:#fce4e4;border:1px solid #ef9a9a;':'color:#2e7d32;background:#e8f5e9;border:1px solid #a5d6a7;')+'">'+(a.status==='停用'?'停用':'啟用中')+'</span></td>'+
-      '<td style="font-size:11px;color:var(--color-text-muted);text-align:center;font-family:var(--font-mono);">' + formatAccDate(a.createdAt) + '</td>'+
+      '<td style="font-size:11px;color:var(--color-text-muted);text-align:center;font-family:var(--font-mono);">' + formatAccDate(a.createdAt) + '<div style="margin-top:3px;">'+loginBadge+'</div></td>'+
       '<td style="text-align:center;">' + accActionsHtml + '</td>';
     tbody.appendChild(tr);
 
@@ -3758,9 +3840,10 @@ function renderAccTable() {
           '<span style="font-size:12px;color:var(--color-text-secondary);">團隊：' + (a.team||'—') + '</span>' +
           '<span style="font-size:12px;color:var(--color-text-secondary);">職稱：' + (a.title||'—') + '</span>' +
           '<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;' + (a.status==='停用'?'color:#c62828;background:#fce4e4;border:1px solid #ef9a9a;':'color:#2e7d32;background:#e8f5e9;border:1px solid #a5d6a7;') + '">' + (a.status==='停用'?'停用':'啟用中') + '</span>' +
+          loginBadge +
         '</div>' +
         '<div class="acc-mobile-card-detail" id="acc-card-detail-'+i+'">' +
-          '<div style="font-size:11px;color:var(--color-text-muted);">建立：' + formatAccDate(a.createdAt) + '</div>' +
+          '<div style="font-size:11px;color:var(--color-text-muted);">建立：' + formatAccDate(a.createdAt) + (a.firstLoginAt ? '　首次登入：' + formatAccDate(a.firstLoginAt) : '') + '</div>' +
           '<div class="acc-mobile-card-actions">' +
           (isBoss ? '<span style="font-size:12px;color:var(--color-text-muted);">🔒 唯讀（boss 不可編輯）</span>' :
             '<button data-acc="'+encodeURIComponent(JSON.stringify(a))+'" onclick="openAccountModal(\'edit\',this.dataset.acc)" style="background:#fdfcf9;border-color:var(--color-border-table);">✏️ 編輯</button>' +
