@@ -1614,11 +1614,11 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
       <!-- ════ 已讀名單 ════ -->
       <div class="page-section" id="page-readlist" style="gap:var(--space-4);">
+        <div class="toolbar" style="background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
+          <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
+          <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rl-count">0</span> 筆</span>
+        </div>
         <div class="table-section">
-          <div class="toolbar">
-            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
-            <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rl-count">0</span> 筆</span>
-          </div>
           <table class="data-table">
             <colgroup>
               <col style="width:170px;"/>
@@ -1815,27 +1815,29 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
           <div class="stat-card bg-reject-grp"><span class="stat-card-label">已停用</span><div class="stat-card-value-row"><span class="stat-card-value red" id="acc-dis">0</span><span class="stat-card-unit">人</span></div></div>
         </div>
 
-        <!-- 表格 -->
-        <div class="table-section" id="acc-desktop-table" style="border-top:none;border-radius:var(--radius-lg);">
-          <div class="toolbar">
-            <div class="search-box">
-              <span class="search-icon">🔍</span>
-              <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable()"/>
-            </div>
-            <select class="filter-select" id="acc-role-filter" onchange="renderAccTable()">
-              <option value="">全部角色</option>
-              <option value="boss">boss</option>
-              <option value="admin">admin</option>
-              <option value="manager">manager</option>
-              <option value="fulltime">fulltime</option>
-              <option value="parttime">parttime</option>
-            </select>
-            <select class="filter-select" id="acc-status-filter" onchange="renderAccTable()">
-              <option value="">全部狀態</option>
-              <option value="啟用">啟用</option>
-              <option value="停用">停用</option>
-            </select>
+        <!-- 搜尋 / 篩選（獨立於表格容器之外，桌機/手機都會顯示）-->
+        <div class="toolbar" style="background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable()"/>
           </div>
+          <select class="filter-select" id="acc-role-filter" onchange="renderAccTable()">
+            <option value="">全部角色</option>
+            <option value="boss">boss</option>
+            <option value="admin">admin</option>
+            <option value="manager">manager</option>
+            <option value="fulltime">fulltime</option>
+            <option value="parttime">parttime</option>
+          </select>
+          <select class="filter-select" id="acc-status-filter" onchange="renderAccTable()">
+            <option value="">全部狀態</option>
+            <option value="啟用">啟用</option>
+            <option value="停用">停用</option>
+          </select>
+        </div>
+
+        <!-- 表格 -->
+        <div class="table-section" id="acc-desktop-table" style="border-top:1px solid var(--color-border-card);border-radius:var(--radius-lg);">
           <table class="data-table">
             <colgroup>
               <col style="width:250px;"/><col style="width:150px;"/><col style="width:150px;"/><col style="width:150px;"/>
