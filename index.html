@@ -224,7 +224,8 @@
         <p class="sidebar-section-sub">主管查閱</p>
         <a href="#" class="sidebar-nav-item" data-perm="workhour" onclick="return showPage('workhour',this)"><span class="sidebar-icon">🕐</span>每日工時登記</a>
         <a href="#" class="sidebar-nav-item" data-perm="labor" onclick="return showPage('labor',this)"><span class="sidebar-icon">📑</span>勞報稅務建檔</a>
-        <a href="https://docs.google.com/spreadsheets/d/1_rWMMZDsfxztQhuZNZyMpey1RqhkS_ufs4InAbxUNus/edit?gid=0#gid=0" target="_blank" class="sidebar-nav-item external" data-perm="main"><span class="sidebar-icon">🧾</span>核銷帳務登記</a>
+        <a href="#" class="sidebar-nav-item" data-perm="main" onclick="return showPage('formupload',this)"><span class="sidebar-icon">📤</span>各式表單上傳</a>
+        <a href="https://docs.google.com/spreadsheets/d/1_rWMMZDsfxztQhuZNZyMpey1RqhkS_ufs4InAbxUNus/edit?gid=126666152#gid=126666152" target="_blank" class="sidebar-nav-item external" data-perm="main"><span class="sidebar-icon">🧾</span>核銷帳務登記</a>
         <a href="https://docs.google.com/spreadsheets/d/1SMXjeTg0H4iFAXOovIdqFs-eSuziysDGhQpxVMHoLu4/edit?gid=1754838196#gid=1754838196" target="_blank" class="sidebar-nav-item external" data-perm="main"><span class="sidebar-icon">💳</span>每月匯款明細</a>
       </div>
 
@@ -496,6 +497,50 @@
       </div>
 
       <!-- ════ 線上表單申請 ════ -->
+
+      <!-- ════ 各式表單上傳 ════ -->
+      <div class="page-section" id="page-formupload">
+        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;overflow-y:auto;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">📤 各式表單上傳</p></div>
+          <div class="article-section">
+            <p class="article-section-title">© 各式申請單及證明</p>
+            <p class="article-body">於每月月底前完成上傳，<br>於次月計算薪資時查閱。</p>
+          </div>
+          <div class="article-section">
+            <p class="article-section-title">© 上傳方式</p>
+            <p class="article-body">掃描各式申請單及證明，<br>並上傳到雲端上，<br>上傳的時候請注意清晰度，<br>不要有反光、模糊、毀損，<br>若有上述情形之一；<br>系統將退件並請重新掃描後再上傳。</p>
+          </div>
+          <div class="article-section">
+            <p class="article-sub-heading">《申請單上傳區》</p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:6px;">
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+                <p class="article-sub">請假申請單</p>
+                <button type="button" class="article-link-btn" onclick="document.getElementById('hr-up-leave').click()">☛ 上傳區</button>
+                <input type="file" id="hr-up-leave" multiple style="display:none" data-folder-id="1Qhpl4zqfaB0yA7dlxEbCSOkLf1hC8Vq8" data-label="請假申請單" onchange="hrFormUpload(this)">
+                <span class="hr-upload-status" id="hr-up-leave-status"></span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+                <p class="article-sub">合意離職申請單</p>
+                <button type="button" class="article-link-btn" onclick="document.getElementById('hr-up-resign').click()">☛ 上傳區</button>
+                <input type="file" id="hr-up-resign" multiple style="display:none" data-folder-id="1CX-MyAuWVOVoYttXuRqkJ9GMZGe-_pOq" data-label="合意離職申請單" onchange="hrFormUpload(this)">
+                <span class="hr-upload-status" id="hr-up-resign-status"></span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+                <p class="article-sub">留復職申請單</p>
+                <button type="button" class="article-link-btn" onclick="document.getElementById('hr-up-return').click()">☛ 上傳區</button>
+                <input type="file" id="hr-up-return" multiple style="display:none" data-folder-id="1sdld55_c7oZrYPeDl8tdcIOngtWOFV5m" data-label="留復職申請單" onchange="hrFormUpload(this)">
+                <span class="hr-upload-status" id="hr-up-return-status"></span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+                <p class="article-sub">員工面談紀錄表</p>
+                <button type="button" class="article-link-btn" onclick="document.getElementById('hr-up-interview').click()">☛ 上傳區</button>
+                <input type="file" id="hr-up-interview" multiple style="display:none" data-folder-id="1Tv5KIhNS8OOX28ihvCnT3rMk9nEOs5qR" data-label="員工面談紀錄表" onchange="hrFormUpload(this)">
+                <span class="hr-upload-status" id="hr-up-interview-status"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- ════ 勞報稅務建檔 ════ -->
       <div class="page-section" id="page-labor">
@@ -992,7 +1037,7 @@ function submitBug() {
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbxzHloEy3LFJYX7QsVVPmUpM63nM0EI3gh6ZwaL_0Xed9q_FnHN9jBMqIlZMF3eGch7/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbzqp-zwDsQnrBrRN9rrjBtIbPhkg-RFzFJwVtQG7J9B7QPM1ev_0hZwQiKIVTWjUud_/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
@@ -1305,6 +1350,72 @@ function dcHandleUpload(input) {
   };
   reader.readAsDataURL(file);
   input.value = '';
+}
+
+/* ── 各式表單上傳（直接上傳到指定 Drive 資料夾，可一次選多個檔案）── */
+function hrFormUpload(input) {
+  if (!input.files || !input.files.length) return;
+  var folderId = input.getAttribute('data-folder-id');
+  var label    = input.getAttribute('data-label') || '檔案';
+  var statusEl = document.getElementById(input.id + '-status');
+  var files = Array.prototype.slice.call(input.files);
+
+  // 檔案大小限制 20MB／個
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].size > 20 * 1024 * 1024) {
+      alert('「' + files[i].name + '」超過 20MB 上限，請重新選擇');
+      input.value = '';
+      return;
+    }
+  }
+
+  var total = files.length;
+  var done  = 0;
+  var failed = 0;
+  if (statusEl) statusEl.textContent = '⏳ 上傳中（0/' + total + '）…';
+
+  function uploadOne(file) {
+    return new Promise(function(resolve){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        var base64 = e.target.result.split(',')[1];
+        fetch(GAS_URL, {
+          method: 'POST',
+          mode:   'no-cors',
+          body: JSON.stringify({
+            action:   'uploadHRForm',
+            folderId: folderId,
+            fileName: file.name,
+            fileData: base64,
+            mimeType: file.type || 'application/octet-stream',
+            uploader: (CURRENT_USER && CURRENT_USER.name) || '管理者',
+          })
+        })
+        .then(function(){ done++; resolve(); })
+        .catch(function(){ failed++; done++; resolve(); });
+      };
+      reader.onerror = function(){ failed++; done++; resolve(); };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // 依序上傳（避免同時送出太多請求造成 GAS 逾時），每完成一個更新一次進度文字
+  var chain = Promise.resolve();
+  files.forEach(function(file){
+    chain = chain.then(function(){
+      return uploadOne(file).then(function(){
+        if (statusEl) statusEl.textContent = '⏳ 上傳中（' + done + '/' + total + '）…';
+      });
+    });
+  });
+  chain.then(function(){
+    if (statusEl) {
+      statusEl.textContent = failed
+        ? '⚠ 完成，但有 ' + failed + ' 個檔案上傳失敗，請重新選擇失敗的檔案再試一次'
+        : '✅ 已上傳 ' + total + ' 個檔案（' + label + '）';
+    }
+    input.value = '';
+  });
 }
 
 /* ── 刪除（清單）── */
