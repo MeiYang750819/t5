@@ -676,6 +676,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .article-link{color:var(--article-link-color);text-decoration:underline;font-size:var(--article-body-size);}
 .article-link:hover{color:var(--article-link-hover);}
 
+/* 「各式表單上傳」按鈕下方的上傳進度/結果小字（可自行調整顏色/大小）*/
+.hr-upload-status{font-family:var(--font-body);font-size:12px;color:#c8c4b4;min-height:16px;}
+
 /* ── 按鈕群組靠左 ── */
 .article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:6px;}
 
