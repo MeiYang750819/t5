@@ -146,7 +146,7 @@
   --article-bg-card:         #f5f9ff;   /* 【可自行調整】內頁卡片內容區更淡的藍色 */
   --article-border:          #b8d4ee;   /* 【可自行調整】內頁藍色邊框 */
   --article-radius:          12px;      /* 【謹慎調整】內頁圓角大小 */
-  --article-padding:         28px 32px; /* 【謹慎調整】內頁內距（上下 28px、左右 32px）*/
+  --article-padding:         28px 28px; /* 【謹慎調整】內頁內距（上下 28px、左右 32px）*/
 
   --article-title-size:      20px;              /* 【可自行調整】內頁標題文字大小 */
   --article-title-weight:    700;                /* 【謹慎調整】內頁標題文字粗細 */
@@ -196,13 +196,13 @@
   --font-weight-light:300; --font-weight-regular:400; --font-weight-medium:500;   /* 【謹慎調整】文字粗細等級 */
   --font-weight-semibold:600; --font-weight-bold:700;                             /* 【謹慎調整】文字粗細等級（越大越粗）*/
 
-  --line-height-tight:1.2; --line-height-normal:1.5;  /* 【謹慎調整】行高，數字越大行距越開 */
+  --line-height-tight:1; --line-height-normal:1.2;  /* 【謹慎調整】行高，數字越大行距越開 */
 
   /* ============================================================
      間距 / 圓角 / 陰影 / 版面尺寸
      ============================================================ */
-  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;   /* 【謹慎調整】系統統一間距單位，很多地方共用，改了會全部連動 */
-  --space-5:20px;--space-6:24px;--space-8:28px;                 /* 【謹慎調整】較大的間距單位 */
+  --space-1:4px;--space-2:6px;--space-3:8px;--space-4:10px;   /* 【謹慎調整】系統統一間距單位，很多地方共用，改了會全部連動 */
+  --space-5:20px;--space-6:24px;--space-8:20px;                 /* 【謹慎調整】較大的間距單位 */
 
   --radius-xs:4px;--radius-sm:6px;--radius-md:8px;    /* 【可自行調整】圓角大小（數字越大越圓潤）*/
   --radius-lg:12px;--radius-full:9999px;               /* 【可自行調整】較大圓角／全圓角（用於圓形按鈕、徽章）*/
@@ -213,9 +213,9 @@
   --shadow-modal:     0 16px 48px rgba(0,0,0,.22);                         /* 【可自行調整】彈出視窗（Modal）陰影 */
 
   --sidebar-width:     225px;   /* 【謹慎調整】電腦版左側選單寬度 */
-  --header-height:      60px;   /* 【謹慎調整】最上方標題列高度 */
+  --header-height:      30px;   /* 【謹慎調整】最上方標題列高度 */
   --content-padding-x: 26px;    /* 【謹慎調整】主要內容區左右內距 */
-  --content-padding-y: 15px;    /* 【謹慎調整】主要內容區上下內距 */
+  --content-padding-y: 10px;    /* 【謹慎調整】主要內容區上下內距 */
   --card-padding:      13px 11px; /* 【謹慎調整】一般卡片的內距 */
   --table-px:          10px;    /* 【謹慎調整】表格儲存格左右內距 */
   --table-py:           9px;    /* 【謹慎調整】表格儲存格上下內距 */
