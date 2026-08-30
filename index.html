@@ -335,8 +335,8 @@
         </div>
         <div class="table-section">
           <div class="toolbar">
-            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="fb-search" placeholder="搜尋…" oninput="renderFbTable()"/></div>
-            <select class="filter-select" id="fb-status-filter" onchange="renderFbTable()" style="width:100px;"><option value="">全部狀態</option><option value="待處理">待處理</option><option value="已處理">已處理</option></select>
+            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="fb-search" placeholder="搜尋…" oninput="renderFbTable();window.__scheduleScrollReset();"/></div>
+            <select class="filter-select" id="fb-status-filter" onchange="renderFbTable();window.__scheduleScrollReset();" style="width:100px;"><option value="">全部狀態</option><option value="待處理">待處理</option><option value="已處理">已處理</option></select>
             <div style="flex:1;"></div><span class="toolbar-info">共 <span id="fb-count">0</span> 筆</span>
           </div>
           <table class="data-table">
@@ -371,8 +371,8 @@
         </div>
         <div class="table-section">
           <div class="toolbar">
-            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rp-search" placeholder="搜尋…" oninput="renderRpTable()"/></div>
-            <select class="filter-select" id="rp-status-filter" onchange="renderRpTable()" style="width:100px;"><option value="">全部狀態</option><option value="待處理">待處理</option><option value="已處理">已處理</option></select>
+            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rp-search" placeholder="搜尋…" oninput="renderRpTable();window.__scheduleScrollReset();"/></div>
+            <select class="filter-select" id="rp-status-filter" onchange="renderRpTable();window.__scheduleScrollReset();" style="width:100px;"><option value="">全部狀態</option><option value="待處理">待處理</option><option value="已處理">已處理</option></select>
             <div style="flex:1;"></div><span class="toolbar-info">共 <span id="rp-count">0</span> 筆</span>
           </div>
           <table class="data-table">
@@ -412,8 +412,8 @@
 
         <div class="table-section">
           <div class="toolbar">
-            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable()"/></div>
-            <select class="filter-select" id="rl-cat-filter" onchange="renderReadListTable()">
+            <div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="rl-search" placeholder="搜尋公告名稱…" oninput="renderReadListTable();window.__scheduleScrollReset();"/></div>
+            <select class="filter-select" id="rl-cat-filter" onchange="renderReadListTable();window.__scheduleScrollReset();">
               <option value="">全部分類</option>
               <option value="人事相關">人事</option>
               <option value="教育訓練">訓練</option>
@@ -462,8 +462,9 @@
 
 
       <div class="page-section" id="page-workhour">
-        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;overflow-y:auto;">
-          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">🕐 每日工時登記</p></div>
+        <div class="article-wrap dark-page" style="padding:0;background-color:#434343;border-color:#555;flex:1;min-height:0;display:flex;flex-direction:column;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;background-color:#434343;"><p class="inner-page-title" style="color:#e8e4d8;">🕐 每日工時登記</p></div>
+          <div class="article-body-wrap">
           <div class="article-section">
             <p class="article-section-title">© 登記工時</p>
             <p class="article-body">可於隔日使用系統登記前一日上、下班工時，<br>一定要於每週二 18:00 前完成上週工時的登記。</p>
@@ -493,6 +494,7 @@
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
@@ -500,8 +502,9 @@
 
       <!-- ════ 各式表單上傳 ════ -->
       <div class="page-section" id="page-formupload">
-        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;overflow-y:auto;">
-          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">📤 各式表單上傳</p></div>
+        <div class="article-wrap dark-page" style="padding:0;background-color:#434343;border-color:#555;flex:1;min-height:0;display:flex;flex-direction:column;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;background-color:#434343;"><p class="inner-page-title" style="color:#e8e4d8;">📤 各式表單上傳</p></div>
+          <div class="article-body-wrap">
           <div class="article-section">
             <p class="article-section-title">© 各式申請單及證明</p>
             <p class="article-body">於每月月底前完成上傳，<br>於次月計算薪資時查閱。</p>
@@ -539,13 +542,15 @@
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
       <!-- ════ 勞報稅務建檔 ════ -->
       <div class="page-section" id="page-labor">
-        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;">
-          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">📑 勞報稅務建檔</p></div>
+        <div class="article-wrap dark-page" style="padding:0;background-color:#434343;border-color:#555;flex:1;min-height:0;display:flex;flex-direction:column;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;background-color:#434343;"><p class="inner-page-title" style="color:#e8e4d8;">📑 勞報稅務建檔</p></div>
+          <div class="article-body-wrap">
           <div class="article-section">
             <p class="article-section-title">© 勞報稅務建檔表</p>
             <p class="article-body">
@@ -565,13 +570,15 @@
               請務必準時完成。
             </p>
           </div>
+          </div>
         </div>
       </div>
 
       <!-- ════ 線上表單申請 ════ -->
       <div class="page-section" id="page-extraops">
-        <div class="article-wrap dark-page" style="background-color:#434343;border-color:#555;flex:1;min-height:0;overflow-y:auto;">
-          <div class="inner-page-header" style="border-bottom-color:#c9a84c;padding:16px 28px;"><p class="inner-page-title" style="color:#e8e4d8;">📋 線上表單申請</p></div>
+        <div class="article-wrap dark-page" style="padding:0;background-color:#434343;border-color:#555;flex:1;min-height:0;display:flex;flex-direction:column;">
+          <div class="inner-page-header" style="border-bottom-color:#c9a84c;background-color:#434343;"><p class="inner-page-title" style="color:#e8e4d8;">📋 線上表單申請</p></div>
+          <div class="article-body-wrap">
           <!-- 收銀交接表 -->
           <div class="article-section">
             <p class="article-section-title">© 收銀交接表</p>
@@ -639,6 +646,7 @@
               <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/1iIQZ-oalInH6s0q8h1KFiow5EHk97SeGOEbylVDK0bQ/edit?usp=drive_link" target="_blank">☛ 點擊申請</a>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
@@ -669,9 +677,9 @@
           <div class="toolbar">
             <div class="search-box">
               <span class="search-icon">🔍</span>
-              <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable()"/>
+              <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable();window.__scheduleScrollReset();"/>
             </div>
-            <select class="filter-select" id="acc-role-filter" onchange="renderAccTable()">
+            <select class="filter-select" id="acc-role-filter" onchange="renderAccTable();window.__scheduleScrollReset();">
               <option value="">全部角色</option>
               <option value="boss">boss</option>
               <option value="admin">admin</option>
@@ -679,7 +687,7 @@
               <option value="fulltime">fulltime</option>
               <option value="parttime">parttime</option>
             </select>
-            <select class="filter-select" id="acc-status-filter" onchange="renderAccTable()">
+            <select class="filter-select" id="acc-status-filter" onchange="renderAccTable();window.__scheduleScrollReset();">
               <option value="">全部狀態</option>
               <option value="啟用">啟用</option>
               <option value="停用">停用</option>
@@ -882,6 +890,16 @@ window.__resetScrollTops = function() {
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
+};
+
+/* 篩選/搜尋框變動後也要重置捲動位置（不只切換整頁時），
+   否則切換分類篩選、輸入搜尋文字時，列表重新渲染可能讓瀏覽器
+   自動調整捲動位置，把上方的搜尋框捲到看不見 */
+window.__scheduleScrollReset = function() {
+  window.__resetScrollTops();
+  requestAnimationFrame(window.__resetScrollTops);
+  setTimeout(window.__resetScrollTops, 50);
+  setTimeout(window.__resetScrollTops, 300);
 };
 
 function showPage(pageId, el) {
