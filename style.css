@@ -660,7 +660,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .article-wrap{background-color:#eef5fc;border:1px solid #b8d4ee;border-radius:var(--article-radius);padding:var(--article-padding);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:20px;min-height:0;}
 
 /* ── 內文文章樣式 ── */
-.article-section{display:flex;flex-direction:column;gap:10px;}
+.article-section{display:flex;flex-direction:column;gap:4px;}
 .article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
@@ -1176,6 +1176,11 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   .search-box{ width:auto; flex:1 1 140px; }
   .toolbar-right{ width:100%; justify-content:space-between; margin-left:0; }
 
+  /* ── 帳號管理搜尋列有「搜尋框＋角色＋狀態」共 3 個欄位，手機版要縮窄
+     搜尋框跟兩個下拉選單的寬度，「全部狀態」才不會被擠到換行 ── */
+  #acc-desktop-table .toolbar .search-box{ flex:0 1 108px; }
+  #acc-desktop-table .toolbar .filter-select{ width:74px; padding:0 18px 0 8px; font-size:11px; }
+
   /* ── Modal：左右留白縮小，沿用原本卡片樣式 ── */
   .form-modal-box,.feedback-modal-box,.reject-modal-box{ padding:18px 16px; }
   #reviewFlowBar{ flex-wrap:wrap !important; row-gap:8px; }
@@ -1188,6 +1193,14 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
   /* ── 帳號管理：總帳號數 → 總數（手機版 label 縮短）── */
   #page-account .stat-card:first-child .stat-card-label{ font-size:0; }
   #page-account .stat-card:first-child .stat-card-label::after{ content:'總數'; font-size:var(--font-size-sm); }
+
+  /* ── 六格儀表板（帳號管理／已讀名單）：手機版整體縮小，讓 6 張卡同時擠在一排不跑版 ── */
+  .stat-dashboard-6{ gap:5px !important; }
+  .stat-dashboard-6 .stat-card{ padding:8px 3px; gap:1px; }
+  .stat-dashboard-6 .stat-card-label{ font-size:9px !important; white-space:nowrap; }
+  .stat-dashboard-6 .stat-card-value{ font-size:17px !important; }
+  .stat-dashboard-6 .stat-card-unit{ font-size:9px; margin-bottom:1px; }
+  #page-account .stat-dashboard-6 .stat-card:first-child .stat-card-label::after{ font-size:9px; }
 
   /* ── 文件中心 RWD：分類欄 → 橫向 Tab 列，文件區佔全寬 ── */
   .doccenter-wrap{ flex-direction:column; overflow-y:auto; }
