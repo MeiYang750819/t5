@@ -660,7 +660,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .article-wrap{background-color:#eef5fc;border:1px solid #b8d4ee;border-radius:var(--article-radius);padding:var(--article-padding);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:20px;min-height:0;}
 
 /* ── 內文文章樣式 ── */
-.article-section{display:flex;flex-direction:column;gap:4px;}
+.article-section{display:flex;flex-direction:column;gap:10px;}
 .article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
