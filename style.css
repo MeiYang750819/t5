@@ -160,7 +160,7 @@
   --article-body-size:       14px;   /* 【可自行調整】內頁內文文字大小 */
   --article-body-weight:     400;    /* 【謹慎調整】內頁內文文字粗細 */
   --article-body-color:      #3a3830; /* 【可自行調整】內頁內文文字顏色 */
-  --article-body-line-height:1.9;    /* 【謹慎調整】內頁內文行距（數字越大行距越開）*/
+  --article-body-line-height:1.2;    /* 【謹慎調整】內頁內文行距（數字越大行距越開）*/
 
   --article-sub-size:        14px;     /* 【可自行調整】內頁次要文字大小 */
   --article-sub-color:       #3a3830;  /* 【可自行調整】內頁次要文字顏色 */
@@ -202,7 +202,7 @@
      間距 / 圓角 / 陰影 / 版面尺寸
      ============================================================ */
   --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;   /* 【謹慎調整】系統統一間距單位，很多地方共用，改了會全部連動 */
-  --space-5:20px;--space-6:24px;--space-8:32px;                 /* 【謹慎調整】較大的間距單位 */
+  --space-5:20px;--space-6:24px;--space-8:28px;                 /* 【謹慎調整】較大的間距單位 */
 
   --radius-xs:4px;--radius-sm:6px;--radius-md:8px;    /* 【可自行調整】圓角大小（數字越大越圓潤）*/
   --radius-lg:12px;--radius-full:9999px;               /* 【可自行調整】較大圓角／全圓角（用於圓形按鈕、徽章）*/
@@ -215,7 +215,7 @@
   --sidebar-width:     225px;   /* 【謹慎調整】電腦版左側選單寬度 */
   --header-height:      60px;   /* 【謹慎調整】最上方標題列高度 */
   --content-padding-x: 26px;    /* 【謹慎調整】主要內容區左右內距 */
-  --content-padding-y: 20px;    /* 【謹慎調整】主要內容區上下內距 */
+  --content-padding-y: 15px;    /* 【謹慎調整】主要內容區上下內距 */
   --card-padding:      13px 11px; /* 【謹慎調整】一般卡片的內距 */
   --table-px:          10px;    /* 【謹慎調整】表格儲存格左右內距 */
   --table-py:           9px;    /* 【謹慎調整】表格儲存格上下內距 */
