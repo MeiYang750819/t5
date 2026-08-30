@@ -401,7 +401,7 @@
       <!-- ════ 已讀名單 ════ -->
       <div class="page-section" id="page-readlist" style="gap:var(--space-4);">
         <!-- 儀表板：依分類統計公告數（點擊可篩選下方列表）-->
-        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+        <div class="stat-dashboard-6" style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
           <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('人事相關')"><span class="stat-card-label">人事</span><div class="stat-card-value-row"><span class="stat-card-value" id="rl-cnt-hr">0</span><span class="stat-card-unit">則</span></div></div>
           <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('教育訓練')"><span class="stat-card-label">訓練</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="rl-cnt-training">0</span><span class="stat-card-unit">則</span></div></div>
           <div class="stat-card bg-progress" style="cursor:pointer;" onclick="rlFilterByCat('企業公告')"><span class="stat-card-label">公告</span><div class="stat-card-value-row"><span class="stat-card-value deep-blue" id="rl-cnt-announce">0</span><span class="stat-card-unit">則</span></div></div>
@@ -655,7 +655,7 @@
         </div>
 
         <!-- 統計列：總帳號=兼職+正職+主管+營運（點擊可篩選下方列表）-->
-        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+        <div class="stat-dashboard-6" style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
           <div class="stat-card bg-total" style="cursor:pointer;" onclick="accFilterByStat('')"><span class="stat-card-label">總帳號數</span><div class="stat-card-value-row"><span class="stat-card-value" id="acc-total">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('parttime')"><span class="stat-card-label">兼職</span><div class="stat-card-value-row"><span class="stat-card-value" style="color:#e65100;" id="acc-pt">0</span><span class="stat-card-unit">人</span></div></div>
           <div class="stat-card bg-progress" style="cursor:pointer;" onclick="accFilterByStat('fulltime')"><span class="stat-card-label">正職</span><div class="stat-card-value-row"><span class="stat-card-value gold" id="acc-ft">0</span><span class="stat-card-unit">人</span></div></div>
