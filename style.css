@@ -146,7 +146,7 @@
   --article-bg-card:         #f5f9ff;   /* 【可自行調整】內頁卡片內容區更淡的藍色 */
   --article-border:          #b8d4ee;   /* 【可自行調整】內頁藍色邊框 */
   --article-radius:          12px;      /* 【謹慎調整】內頁圓角大小 */
-  --article-padding:         28px 28px; /* 【謹慎調整】內頁內距（上下 28px、左右 32px）*/
+  --article-padding:         28px 32px; /* 【謹慎調整】內頁內距（上下 28px、左右 32px）*/
 
   --article-title-size:      20px;              /* 【可自行調整】內頁標題文字大小 */
   --article-title-weight:    700;                /* 【謹慎調整】內頁標題文字粗細 */
