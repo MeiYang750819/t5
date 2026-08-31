@@ -165,7 +165,7 @@
   --article-body-size:       14px;   /* 【可自行調整】內頁內文文字大小 */
   --article-body-weight:     400;    /* 【謹慎調整】內頁內文文字粗細 */
   --article-body-color:      #3a3830; /* 【可自行調整】內頁內文文字顏色 */
-  --article-body-line-height:1.9;    /* 【謹慎調整】內頁內文行距（數字越大行距越開）*/
+  --article-body-line-height:0.8;    /* 【謹慎調整】內頁內文行距（數字越大行距越開）*/
 
   --article-sub-size:        14px;     /* 【可自行調整】內頁次要文字大小 */
   --article-sub-color:       #3a3830;  /* 【可自行調整】內頁次要文字顏色 */
