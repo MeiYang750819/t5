@@ -148,6 +148,11 @@
   --article-radius:          12px;      /* 【謹慎調整】內頁圓角大小 */
   --article-padding:         28px 32px; /* 【謹慎調整】內頁內距（上下 28px、左右 32px）*/
 
+  /* 【★這裡就是統一間距的唯一變數★】每日工時登記／勞報稅務建檔／線上表單申請／各式表單上傳
+     這四頁，從標題到內文到按鈕，所有間距都是套用這一個數字。
+     想讓間距整體變大或變小，只要改這一行就好，四頁會同時一起變動、彼此間距永遠一致。 */
+  --uniform-article-gap:     6px;  /* 【可自行調整】四頁共用的統一間距數值 */
+
   --article-title-size:      20px;              /* 【可自行調整】內頁標題文字大小 */
   --article-title-weight:    700;                /* 【謹慎調整】內頁標題文字粗細 */
   --article-title-color:     #1c1c15;            /* 【可自行調整】內頁標題文字顏色 */
@@ -328,7 +333,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
 /* 文件中心 / 數據分析 頁面貼滿邊（無 padding）*/
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
-.page-section.active{display:flex;flex-direction:column;}
+.page-section.active{display:flex;flex-direction:column;flex-shrink:0;}
 #page-doccenter.active{display:flex;flex:1;min-height:0;flex-direction:column;}
 #page-workhour.active,#page-labor.active,#page-extraops.active{display:flex;flex:1;min-height:0;flex-direction:column;}
 
@@ -385,9 +390,9 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 /* ============================================================
    表格區塊
    ============================================================ */
-.table-section{background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);}
+.table-section{background-color:var(--color-bg-card);border:1px solid var(--color-border-card);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);flex-shrink:0;}
 
-.toolbar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border-table);background-color:#fdfcf9;flex-wrap:wrap;}
+.toolbar{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border-table);background-color:#fdfcf9;flex-wrap:wrap;flex-shrink:0;}
 .toolbar-right{margin-left:auto;display:flex;align-items:center;gap:var(--space-3);}
 .toolbar-info{font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--color-text-muted);white-space:nowrap;}
 .toolbar-label{font-family:var(--font-body);font-size:var(--font-size-sm);color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;}
@@ -665,17 +670,17 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    底線以下的內容才有內距，並統一控制「不同段落之間」的間距。
    ── */
 .article-body-wrap{
-  padding:10px 28px;          /* 【謹慎調整】內容區內距；上下值＝跟其他間距統一的同一個數字 */
+  padding:var(--uniform-article-gap) 28px;  /* 上下內距＝統一間距變數，左右維持 28px 版面邊界 */
   display:flex;
   flex-direction:column;
-  gap:10px;                   /* 【可自行調整】不同段落之間的間距，四頁共用同一個數值，確保間距一致 */
+  gap:var(--uniform-article-gap);           /* 不同段落之間的間距 */
   overflow-y:auto;
   flex:1;
   min-height:0;
 }
 
 /* ── 內文文章樣式 ── */
-.article-section{display:flex;flex-direction:column;gap:10px;}  /* 【可自行調整】同一段落內每一行（標題／內文／按鈕）之間的間距，跟上面 .article-body-wrap 的間距用同一個數字，達到「每個間距都一樣」*/
+.article-section{display:flex;flex-direction:column;gap:var(--uniform-article-gap);}
 .article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
@@ -695,7 +700,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .hr-upload-status{font-family:var(--font-body);font-size:12px;color:#c8c4b4;min-height:16px;}
 
 /* ── 按鈕群組靠左 ── */
-.article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:0;}
+.article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:var(--uniform-article-gap);margin-top:0;}
 
 /* ── 審核人 / 覆核人 顯示樣式（名字 + ✓ 標記）── */
 .reviewer-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;}
