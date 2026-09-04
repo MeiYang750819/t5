@@ -210,7 +210,7 @@
   --font-weight-light:300; --font-weight-regular:400; --font-weight-medium:500;   /* 【謹慎調整】文字粗細等級 */
   --font-weight-semibold:600; --font-weight-bold:700;                             /* 【謹慎調整】文字粗細等級（越大越粗）*/
 
-  --line-height-tight:1.2; --line-height-normal:1;  /* 【謹慎調整】行高，數字越大行距越開 */
+  --line-height-tight:1.2; --line-height-normal:1.5;  /* 【謹慎調整】行高，數字越大行距越開 */
 
   /* ============================================================
      間距 / 圓角 / 陰影 / 版面尺寸
@@ -342,7 +342,15 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
 /* 文件中心 / 數據分析 頁面貼滿邊（無 padding）*/
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
-.page-section.active{display:flex;flex-direction:column;flex-shrink:0;}
+.page-section.active{display:flex;flex-direction:column;}
+/* 「清單型」頁面（帳號管理／已讀名單／意見回饋／問題回報）內容筆數變多時，
+   要讓整頁一起往下捲動，所以這幾頁的區塊本身不能被壓縮，
+   否則資料一多，上面的搜尋列會被瀏覽器擠壓變形（詳見先前修正）。
+   「卡片型」頁面（文件中心／每日工時登記／勞報稅務建檔／線上表單申請／各式表單上傳）
+   則相反：需要維持在畫面高度以內、卡片本身自己捲動，
+   所以這幾頁不能套用 flex-shrink:0，否則卡片會被整頁往下推、上方留白，
+   而不是卡片自己在原地捲動內容。 */
+#page-account.active, #page-readlist.active, #page-feedback-mgr.active, #page-report-mgr.active{ flex-shrink:0; }
 #page-doccenter.active{display:flex;flex:1;min-height:0;flex-direction:column;}
 #page-workhour.active,#page-labor.active,#page-extraops.active{display:flex;flex:1;min-height:0;flex-direction:column;}
 
@@ -679,7 +687,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    底線以下的內容才有內距，並統一控制「不同段落之間」的間距。
    ── */
 .article-body-wrap{
-  padding:var(--uniform-article-gap) 15px;  /* 上下內距＝統一間距變數，左右維持 28px 版面邊界 */
+  padding:var(--uniform-article-gap) 28px;  /* 上下內距＝統一間距變數，左右維持 28px 版面邊界 */
   display:flex;
   flex-direction:column;
   gap:var(--uniform-article-gap);           /* 不同段落之間的間距 */
@@ -706,7 +714,8 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 .article-link:hover{color:var(--article-link-hover);}
 
 /* 「各式表單上傳」按鈕下方的上傳進度/結果小字（可自行調整顏色/大小）*/
-.hr-upload-status{font-family:var(--font-body);font-size:12px;color:#c8c4b4;min-height:16px;}
+.hr-upload-status{font-family:var(--font-body);font-size:12px;color:#c8c4b4;display:block;}
+.hr-upload-status:empty{display:none;}  /* 空白（還沒開始上傳）時完全不佔空間，避免每組項目之間的間距看起來比其他間距大 */
 
 /* ── 按鈕群組靠左 ── */
 .article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:var(--uniform-article-gap);margin-top:0;}
