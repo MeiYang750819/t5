@@ -174,7 +174,7 @@
   --article-body-size:       14px;   /* 【可自行調整】內頁內文文字大小 */
   --article-body-weight:     400;    /* 【謹慎調整】內頁內文文字粗細 */
   --article-body-color:      #3a3830; /* 【可自行調整】內頁內文文字顏色 */
-  --article-body-line-height:1.9;    /* 【謹慎調整】內頁內文行距（數字越大行距越開）*/
+  --article-body-line-height:1.3;    /* 【謹慎調整】內頁內文「同一段落裡」的行距（數字越大，一段文字裡每一行的間距越開）。之前設 1.9 太寬鬆，這個值也會讓段落上方/下方多出一截看不見的留白，跟其他間距（例如按鈕跟按鈕之間）比起來就顯得特別大，這是造成間距看起來不一致的主因，這次調整為 1.3。這裡大部分段落都是用 &lt;br&gt; 手動換行，不靠自然斷行，所以調緊一點不影響閱讀 */
 
   --article-sub-size:        14px;     /* 【可自行調整】內頁次要文字大小 */
   --article-sub-color:       #3a3830;  /* 【可自行調整】內頁次要文字顏色 */
@@ -265,7 +265,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 /* ============================================================
    Layout
    ============================================================ */
-.app-wrapper{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+.app-wrapper{display:flex;flex-direction:column;width:100%;height:100%;overflow:hidden;}
 
 /* ── Header ── */
 .app-header{
@@ -698,10 +698,10 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
 /* ── 內文文章樣式 ── */
 .article-section{display:flex;flex-direction:column;gap:var(--uniform-article-gap);}
-.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);}
+.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.3;}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
-.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);margin-bottom:2px;}
+.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.3;}
 
 /* ── 框框式連結按鈕（靠左對齊）── */
 .article-link-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background-color:var(--article-link-btn-bg);border:1px solid var(--article-link-btn-border);border-radius:var(--article-link-btn-radius);height:var(--article-link-btn-height);width:var(--article-link-btn-width);padding:0 var(--space-4);font-family:var(--font-body);font-size:var(--article-link-btn-size);font-weight:var(--article-link-btn-weight);color:var(--article-link-btn-text);text-decoration:none;cursor:pointer;transition:background-color var(--transition-fast);white-space:nowrap;}
