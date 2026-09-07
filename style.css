@@ -226,7 +226,7 @@
   --shadow-tooltip:   0 8px 24px rgba(0,0,0,.18);                          /* 【可自行調整】提示框陰影 */
   --shadow-modal:     0 16px 48px rgba(0,0,0,.22);                         /* 【可自行調整】彈出視窗（Modal）陰影 */
 
-  --sidebar-width:     200px;   /* 【謹慎調整】電腦版左側選單寬度 */
+  --sidebar-width:     250px;   /* 【謹慎調整】電腦版左側選單寬度 */
   --header-height:      42px;   /* 【謹慎調整】最上方標題列高度；數字越小，標題文字上下的留白就越少 */
   --content-padding-x: 18px;    /* 【謹慎調整】主要內容區左右內距 */
   --content-padding-y: 14px;    /* 【謹慎調整】主要內容區上下內距 */
