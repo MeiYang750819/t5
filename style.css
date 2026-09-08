@@ -226,7 +226,7 @@
   --shadow-tooltip:   0 8px 24px rgba(0,0,0,.18);                          /* 【可自行調整】提示框陰影 */
   --shadow-modal:     0 16px 48px rgba(0,0,0,.22);                         /* 【可自行調整】彈出視窗（Modal）陰影 */
 
-  --sidebar-width:     250px;   /* 【謹慎調整】電腦版左側選單寬度 */
+  --sidebar-width:     200px;   /* 【謹慎調整】電腦版左側選單寬度 */
   --header-height:      42px;   /* 【謹慎調整】最上方標題列高度；數字越小，標題文字上下的留白就越少 */
   --content-padding-x: 18px;    /* 【謹慎調整】主要內容區左右內距 */
   --content-padding-y: 14px;    /* 【謹慎調整】主要內容區上下內距 */
@@ -340,6 +340,15 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
    主內容
    ============================================================ */
 .app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
+/* 這幾頁本身就是一塊貼滿的卡片／深色板面，不需要 app-main 額外的內距，
+   否則卡片外圍會露出一圈跟卡片顏色不同的底色，看起來像沒貼合的留邊 */
+.app-main:has(#page-doccenter.active),
+.app-main:has(#page-workhour.active),
+.app-main:has(#page-formupload.active),
+.app-main:has(#page-labor.active),
+.app-main:has(#page-extraops.active){
+  padding:0;
+}
 /* 文件中心 / 數據分析 頁面貼滿邊（無 padding）*/
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
 .page-section.active{display:flex;flex-direction:column;}
@@ -1155,6 +1164,13 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
   /* ── 主內容：底部留空給 tabbar(60px) + toggle(22px) ── */
   .app-main{ padding:12px 12px 74px 12px; }
+  .app-main:has(#page-doccenter.active),
+  .app-main:has(#page-workhour.active),
+  .app-main:has(#page-formupload.active),
+  .app-main:has(#page-labor.active),
+  .app-main:has(#page-extraops.active){
+    padding:0 0 74px 0;
+  }
 
   /* ── 側邊欄在手機版改由迷你面板取代，本體隱藏 ── */
   .app-sidebar{ display:none !important; }
