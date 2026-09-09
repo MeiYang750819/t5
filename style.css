@@ -160,7 +160,7 @@
      改這一個數字，四頁會同時一起變、彼此間距永遠相同。
      （在 style.css 用 Ctrl+F / Cmd+F 搜尋「uniform-article-gap」就能找到這裡）
      ══════════════════════════════════════════════════════════════ */
-  --uniform-article-gap:     6px;  /* 【可自行調整】四頁共用的統一間距數值，數字越小間距越緊湊 */
+  --uniform-article-gap:     3px;  /* 【可自行調整】四頁共用的統一間距數值，數字越小間距越緊湊 */
 
   --article-title-size:      20px;              /* 【可自行調整】內頁標題文字大小 */
   --article-title-weight:    700;                /* 【謹慎調整】內頁標題文字粗細 */
@@ -174,7 +174,7 @@
   --article-body-size:       14px;   /* 【可自行調整】內頁內文文字大小 */
   --article-body-weight:     400;    /* 【謹慎調整】內頁內文文字粗細 */
   --article-body-color:      #3a3830; /* 【可自行調整】內頁內文文字顏色 */
-  --article-body-line-height:1.3;    /* 【謹慎調整】內頁內文「同一段落裡」的行距（數字越大，一段文字裡每一行的間距越開）。之前設 1.9 太寬鬆，這個值也會讓段落上方/下方多出一截看不見的留白，跟其他間距（例如按鈕跟按鈕之間）比起來就顯得特別大，這是造成間距看起來不一致的主因，這次調整為 1.3。這裡大部分段落都是用 &lt;br&gt; 手動換行，不靠自然斷行，所以調緊一點不影響閱讀 */
+  --article-body-line-height:1.1;    /* 【謹慎調整】內頁內文「同一段落裡」的行距（數字越大，一段文字裡每一行的間距越開）。之前設 1.9 太寬鬆，這個值也會讓段落上方/下方多出一截看不見的留白，跟其他間距（例如按鈕跟按鈕之間）比起來就顯得特別大，這是造成間距看起來不一致的主因，先調整為 1.3，這次再進一步調緊為 1.15。這裡大部分段落都是用 &lt;br&gt; 手動換行，不靠自然斷行，所以調緊一點不影響閱讀 */
 
   --article-sub-size:        14px;     /* 【可自行調整】內頁次要文字大小 */
   --article-sub-color:       #3a3830;  /* 【可自行調整】內頁次要文字顏色 */
@@ -260,7 +260,7 @@
 
 /* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-base);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);color:var(--color-text-primary);background-color:var(--color-bg-app);-webkit-font-smoothing:antialiased;}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(--font-body);font-size:var(--font-size-base);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);color:var(--color-text-primary);background-color:var(--color-bg-app);-webkit-font-smoothing:antialiased;}
 
 /* ============================================================
    Layout
@@ -339,16 +339,7 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 /* ============================================================
    主內容
    ============================================================ */
-.app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
-/* 這幾頁本身就是一塊貼滿的卡片／深色板面，不需要 app-main 額外的內距，
-   否則卡片外圍會露出一圈跟卡片顏色不同的底色，看起來像沒貼合的留邊 */
-.app-main:has(#page-doccenter.active),
-.app-main:has(#page-workhour.active),
-.app-main:has(#page-formupload.active),
-.app-main:has(#page-labor.active),
-.app-main:has(#page-extraops.active){
-  padding:0;
-}
+.app-main{flex:1;background-color:var(--color-bg-main);overflow-y:auto;overflow-anchor:none;overscroll-behavior:contain;padding:var(--content-padding-y) var(--content-padding-x);display:flex;flex-direction:column;gap:var(--space-4);min-height:0;}
 /* 文件中心 / 數據分析 頁面貼滿邊（無 padding）*/
 #page-doccenter.active,.page-section{display:none;flex-direction:column;gap:var(--space-4);overflow-x:hidden;}
 .page-section.active{display:flex;flex-direction:column;}
@@ -707,10 +698,10 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
 /* ── 內文文章樣式 ── */
 .article-section{display:flex;flex-direction:column;gap:var(--uniform-article-gap);}
-.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.3;}
+.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.1;}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
-.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.3;}
+.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.1;}
 
 /* ── 框框式連結按鈕（靠左對齊）── */
 .article-link-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background-color:var(--article-link-btn-bg);border:1px solid var(--article-link-btn-border);border-radius:var(--article-link-btn-radius);height:var(--article-link-btn-height);width:var(--article-link-btn-width);padding:0 var(--space-4);font-family:var(--font-body);font-size:var(--article-link-btn-size);font-weight:var(--article-link-btn-weight);color:var(--article-link-btn-text);text-decoration:none;cursor:pointer;transition:background-color var(--transition-fast);white-space:nowrap;}
@@ -1164,13 +1155,6 @@ html,body{height:100%;font-family:var(--font-body);font-size:var(--font-size-bas
 
   /* ── 主內容：底部留空給 tabbar(60px) + toggle(22px) ── */
   .app-main{ padding:12px 12px 74px 12px; }
-  .app-main:has(#page-doccenter.active),
-  .app-main:has(#page-workhour.active),
-  .app-main:has(#page-formupload.active),
-  .app-main:has(#page-labor.active),
-  .app-main:has(#page-extraops.active){
-    padding:0 0 74px 0;
-  }
 
   /* ── 側邊欄在手機版改由迷你面板取代，本體隱藏 ── */
   .app-sidebar{ display:none !important; }
