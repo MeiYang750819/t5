@@ -161,6 +161,7 @@
      （在 style.css 用 Ctrl+F / Cmd+F 搜尋「uniform-article-gap」就能找到這裡）
      ══════════════════════════════════════════════════════════════ */
   --uniform-article-gap:     3px;  /* 【可自行調整】四頁共用的統一間距數值，數字越小間距越緊湊 */
+  --article-btn-gap:         14px; /* 【可自行調整】同一組按鈕（例如「本月登記執行」跟「年度申請查閱」）上下之間的間距，跟上面那個「統一間距」分開控制 */
 
   --article-title-size:      20px;              /* 【可自行調整】內頁標題文字大小 */
   --article-title-weight:    700;                /* 【謹慎調整】內頁標題文字粗細 */
@@ -174,7 +175,7 @@
   --article-body-size:       14px;   /* 【可自行調整】內頁內文文字大小 */
   --article-body-weight:     400;    /* 【謹慎調整】內頁內文文字粗細 */
   --article-body-color:      #3a3830; /* 【可自行調整】內頁內文文字顏色 */
-  --article-body-line-height:1.1;    /* 【謹慎調整】內頁內文「同一段落裡」的行距（數字越大，一段文字裡每一行的間距越開）。之前設 1.9 太寬鬆，這個值也會讓段落上方/下方多出一截看不見的留白，跟其他間距（例如按鈕跟按鈕之間）比起來就顯得特別大，這是造成間距看起來不一致的主因，先調整為 1.3，這次再進一步調緊為 1.15。這裡大部分段落都是用 &lt;br&gt; 手動換行，不靠自然斷行，所以調緊一點不影響閱讀 */
+  --article-body-line-height:1.5;    /* 【謹慎調整】內頁內文「同一段落裡」的行距（數字越大，一段文字裡每一行的間距越開）。之前調到 1.1 太緊，文字擠在一起不好讀，這次改回 1.5 */
 
   --article-sub-size:        14px;     /* 【可自行調整】內頁次要文字大小 */
   --article-sub-color:       #3a3830;  /* 【可自行調整】內頁次要文字顏色 */
@@ -698,10 +699,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 
 /* ── 內文文章樣式 ── */
 .article-section{display:flex;flex-direction:column;gap:var(--uniform-article-gap);}
-.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.1;}
+.article-section-title{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.5;}
 .article-body{font-family:var(--font-body);font-size:var(--article-body-size);font-weight:var(--article-body-weight);color:var(--article-body-color);line-height:var(--article-body-line-height);}
 .article-sub{font-family:var(--font-body);font-size:var(--article-sub-size);color:var(--article-sub-color);line-height:var(--article-body-line-height);padding-left:var(--space-4);}
-.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.1;}
+.article-sub-heading{font-family:var(--font-body);font-size:var(--article-section-size);font-weight:var(--article-section-weight);color:var(--article-section-color);line-height:1.5;}
 
 /* ── 框框式連結按鈕（靠左對齊）── */
 .article-link-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background-color:var(--article-link-btn-bg);border:1px solid var(--article-link-btn-border);border-radius:var(--article-link-btn-radius);height:var(--article-link-btn-height);width:var(--article-link-btn-width);padding:0 var(--space-4);font-family:var(--font-body);font-size:var(--article-link-btn-size);font-weight:var(--article-link-btn-weight);color:var(--article-link-btn-text);text-decoration:none;cursor:pointer;transition:background-color var(--transition-fast);white-space:nowrap;}
@@ -718,7 +719,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 .hr-upload-status:empty{display:none;}  /* 空白（還沒開始上傳）時完全不佔空間，避免每組項目之間的間距看起來比其他間距大 */
 
 /* ── 按鈕群組靠左 ── */
-.article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:var(--uniform-article-gap);margin-top:0;}
+.article-btn-group{display:flex;flex-direction:column;align-items:flex-start;gap:var(--article-btn-gap);margin-top:0;}
 
 /* ── 審核人 / 覆核人 顯示樣式（名字 + ✓ 標記）── */
 .reviewer-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;}
