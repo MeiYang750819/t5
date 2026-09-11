@@ -17,13 +17,11 @@
 <link rel="stylesheet" href="style.css">
 
   <meta property="og:title" content="📝｜MYs系統｜行政公告管理系統" />
-  <meta property="og:description" content="整合各類行政申請簽核與企業文件中心，全面提升團隊行政效率與協作！" />
+  <meta property="og:description" content="各類行政表單與企業各式公告！" />
 </head>
 <body>
 
 <div class="app-wrapper">
-
-  <!-- ══ Header ══ -->
     
 <!-- ════ 加入主畫面教學（手機版）════ -->
 <div class="a2hs-overlay" id="a2hsOverlay">
@@ -81,7 +79,7 @@
       </div>
     </div>
 
-    <button class="a2hs-confirm-btn" onclick="closeA2hsModal()">已完全明白，開始使用</button>
+    <button class="a2hs-confirm-btn" onclick="closeA2hsModal()">繼續下一頁</button>
   </div>
 </div>
 
@@ -91,7 +89,7 @@
     <div class="a2hs-header">
       <span class="a2hs-icon">🔑</span>
       <p class="a2hs-title">如何知道自己的帳號密碼</p>
-      <p class="a2hs-sub">登入前請先確認以下三點</p>
+      <p class="a2hs-sub">登入前請先確認以下前三點</p>
     </div>
 
     <div class="a2hs-steps">
@@ -105,23 +103,26 @@
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>使用的是您<b>填寫勞保卡時所留的 mail</b></div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>使用的是<b>填寫勞保卡時所留的mail</b></div>
       </div>
       <div class="a2hs-step">
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>預設密碼為<b>手機號碼末 6 碼</b></div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">3</span>密碼為<b>手機號碼末六碼</b></div>
       </div>
       <div class="a2hs-step">
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5"/><circle cx="12" cy="17" r=".6" fill="#c9a84c"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">4</span>還是看不懂？請<b>禮貌性詢問人資承辦</b></div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">4</span>若有疑問請<b>禮貌性詢問人資承辦</b></div>
       </div>
     </div>
 
-    <button class="a2hs-confirm-btn" onclick="closeCredHelpModal()">我知道了</button>
+    <div class="a2hs-btn-row">
+      <button class="a2hs-back-btn" id="credHelpBackBtn" onclick="backToA2hsModal()">← 回上一頁</button>
+      <button class="a2hs-confirm-btn" onclick="closeCredHelpModal()">我知道了，開始使用</button>
+    </div>
   </div>
 </div>
 
@@ -186,7 +187,7 @@
     <div class="header-brand">
       <img src="https://mys0819.github.io/AMS/assets/MYs_logo_去背.png" alt="MYs Logo" class="header-logo" style="height:38px;width:auto;opacity:.9;" />
       <div class="header-title-group">
-        <span class="header-title">行政公告管理系統</span>
+        <span class="header-title">行政公告管理系統<span class="header-title-sub"> Social Company</span></span>
         <span class="header-subtitle" id="header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
         <span class="mob-header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
       </div>
@@ -317,13 +318,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ════ 申請趨勢分析 ════ -->
-
-
-      <!-- ════ 申請紀錄 ════ -->
-
-      <!-- ════ 本月紀錄 ════ -->
 
       <!-- ════ 本月查詢 ════ -->
 
@@ -459,15 +453,13 @@
   </div>
 </div>
 
-
-
       <div class="page-section" id="page-workhour">
         <div class="article-wrap dark-page" style="padding:0;overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column;background-color:#434343;border:none;border-radius:0;">
           <div class="inner-page-header" style="padding:var(--uniform-article-gap) 28px;border-bottom-color:#c9a84c;background-color:#434343;"><p class="inner-page-title" style="color:#e8e4d8;">🕐 每日工時登記</p></div>
           <div class="article-body-wrap">
           <div class="article-section">
             <p class="article-section-title">© 登記工時</p>
-            <p class="article-body">可於隔日使用系統登記前一日上、下班工時，<br>一定要於每週二 18:00 前完成上週工時的登記。</p>
+            <p class="article-body">可於隔日使用系統登記前一日上、下班工時，<br>須於每週二18:00前完成上週工時的登記。</p>
             <div class="article-btn-group">
               <a class="article-link-btn" href="https://docs.google.com/spreadsheets/d/18Wpok2lWB6IELsovYaxeM5o037Vmd5RYsLPZuB7AqXo/edit?gid=1732819179#gid=1732819179" target="_blank">☛ 本月登記執行</a>
               <a class="article-warn" href="https://drive.google.com/drive/u/1/folders/1hec_bEJkWs_BdDCjZULA-y5Lv5oLrBgr" target="_blank">⚠︎ 年度申請查閱</a>
@@ -497,8 +489,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ════ 線上表單申請 ════ -->
 
       <!-- ════ 各式表單上傳 ════ -->
       <div class="page-section" id="page-formupload">
@@ -565,7 +555,7 @@
           <div class="article-section">
             <p class="article-section-title">© 注意事項</p>
             <p class="article-body">
-              每月建檔截止日期為當月 25 日，<br>
+              每月建檔截止日期為當月25日，<br>
               逾期未建檔將影響當月薪資計算，<br>
               請務必準時完成。
             </p>
@@ -584,7 +574,7 @@
             <p class="article-section-title">© 收銀交接表</p>
             <p class="article-body">
               表單申請權限後，並回報於Line群組：<br>
-              03_交接群➤SC並Tag名揚完成申請，<br>
+              03_交接群➤SC並tag名揚完成申請，<br>
               兼職同仁請私訊名揚完成申請，<br>
               並告知個人信箱帳號，<br>
               如無回報，則權限不開放。
@@ -598,7 +588,7 @@
             <p class="article-section-title">© 各項庫存盤點表</p>
             <p class="article-body">
               表單申請權限後，並回報於Line群組：<br>
-              03_交接群➤SC並Tag名揚完成申請，<br>
+              03_交接群➤SC並tag名揚完成申請，<br>
               兼職同仁請私訊名揚完成申請，<br>
               並告知個人信箱帳號，<br>
               如無回報，則權限不開放。
@@ -612,7 +602,7 @@
             <p class="article-section-title">© 個人事務追蹤清單</p>
             <p class="article-body">
               表單申請權限後，並回報於Line群組：<br>
-              03_交接群➤SC並Tag名揚完成申請，<br>
+              03_交接群➤SC並tag名揚完成申請，<br>
               並告知個人信箱帳號，<br>
               如無回報，則權限不開放。
             </p>
@@ -625,7 +615,7 @@
             <p class="article-section-title">© 正職職掌分配表</p>
             <p class="article-body">
               表單申請權限後，並回報於Line群組：<br>
-              03_交接群➤SC並Tag名揚完成申請，<br>
+              03_交接群➤SC並tag名揚完成申請，<br>
               並告知個人信箱帳號，<br>
               如無回報，則權限不開放。
             </p>
@@ -638,7 +628,7 @@
             <p class="article-section-title">© 個人裝備領取表</p>
             <p class="article-body">
               表單申請權限後，並回報於Line群組：<br>
-              03_交接群➤SC並Tag名揚完成申請，<br>
+              03_交接群➤SC並tag名揚完成申請，<br>
               並告知個人信箱帳號，<br>
               如無回報，則權限不開放。
             </p>
@@ -677,7 +667,7 @@
           <div class="toolbar">
             <div class="search-box">
               <span class="search-icon">🔍</span>
-              <input class="search-input" id="acc-search" placeholder="搜尋姓名或信箱…" oninput="renderAccTable();window.__scheduleScrollReset();"/>
+              <input class="search-input" id="acc-search" placeholder="搜尋…" oninput="renderAccTable();window.__scheduleScrollReset();"/>
             </div>
             <select class="filter-select" id="acc-role-filter" onchange="renderAccTable();window.__scheduleScrollReset();">
               <option value="">全部角色</option>
@@ -744,7 +734,7 @@
       <div style="display:flex;flex-direction:column;gap:5px;">
         <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">電子信箱<span style="color:#e53935;margin-left:2px;">*</span></label>
         <div style="position:relative;">
-    <input style="border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 12px;font-family:var(--font-body);font-size:14px;color:var(--color-text-primary);background:#fff;outline:none;width:100%;box-sizing:border-box;" id="acc-mail-input" type="text" placeholder="example@gmail.com" autocomplete="off" oninput="updateAccMailSuggestions(this)"/>
+    <input class="form-input" style="width:100%;box-sizing:border-box;" id="acc-mail-input" type="text" placeholder="example@gmail.com" autocomplete="off" oninput="updateAccMailSuggestions(this)"/>
     <div id="acc-mail-dropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--color-border-card);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200;max-height:160px;overflow-y:auto;margin-top:3px;"></div>
         </div>
       </div>
@@ -781,7 +771,7 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:5px;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">職稱</label>
-    <input class="form-input" id="acc-title" type="text" placeholder="請輸入職稱（如：正職、兼職、臨時工…）"/>
+    <input class="form-input" id="acc-title" type="text" placeholder="請輸入職稱"/>
         </div>
       </div>
 
@@ -817,7 +807,7 @@
   <div class="feedback-modal-box">
     <div class="feedback-modal-header">
       <p class="feedback-modal-title">💬 意見欄</p>
-      <p class="feedback-modal-subtitle">您的意見將被妥善處理，可選擇具名或匿名送出。</p>
+      <p class="feedback-modal-subtitle">你/妳的意見將被妥善處理，可選擇具名或匿名送出。</p>
     </div>
     <div class="feedback-row-1">
       <span class="feedback-label">署名</span>
@@ -837,10 +827,10 @@
         <option value="其他">📝 其他</option>
       </select>
     </div>
-    <textarea class="feedback-textarea" id="feedbackText" placeholder="請輸入您的意見內容…"></textarea>
+    <textarea class="feedback-textarea" id="feedbackText" placeholder="請輸入你/妳的意見內容…"></textarea>
     <div class="feedback-footer">
       <button class="btn-cancel" onclick="closeFeedback()">✕ 取消</button>
-      <button class="btn-submit" onclick="submitFeedback()">✉ 送出</button>
+      <button class="btn-submit" onclick="submitFeedback()">📤 送出</button>
     </div>
   </div>
 </div>
@@ -873,8 +863,6 @@
     </div>
   </div>
 </div>
-
-<!-- ══ 流程查看 Modal（員工用）══ -->
 
 <script>
 
@@ -936,10 +924,6 @@ function showPage(pageId, el) {
   return false;
 }
 
-/* ══ 清單/圖示切換 ══ */
-
-/* ══ 上傳 PDF ══ */
-
 /* ══ 意見欄 ══ */
 function openFeedback()  { document.getElementById('feedbackModal').classList.add('open'); }
 function closeFeedback() {
@@ -989,7 +973,7 @@ function submitFeedback() {
     })
   }).then(function(){
     if (submitBtn) { submitBtn.textContent = '✉ 送出'; submitBtn.disabled = false; }
-    showToastGlobal('✅ 意見已送出！感謝您的回饋。', 'ok', 3000);
+    showToastGlobal('✅ 意見已送出！感謝你/妳的回饋。', 'ok', 3000);
     closeFeedback();
     document.getElementById('feedbackType').value = '';
     document.getElementById('feedbackText').value = '';
@@ -1030,7 +1014,7 @@ function submitBug() {
     body: JSON.stringify({ action:'addBugReport', time:ts, name:bugName, bugType:bugType, desc:desc })
   }).then(function(){
     if (submitBtn) { submitBtn.textContent = '📤 送出回報'; submitBtn.disabled = false; }
-    showToastGlobal('✅ 問題已回報！我們將盡快處理，感謝您的回報。', 'ok', 3000);
+    showToastGlobal('✅ 問題已送出！我們將盡快處理，感謝你/妳的回報。', 'ok', 3000);
     closeBugReport();
     // 清空欄位
     var btEl = document.getElementById('bug-type');
@@ -1042,15 +1026,6 @@ function submitBug() {
     alert('送出失敗：' + err.message);
   });
 }
-
-
-/* ══ 年度切換 ══ */
-
-/* ══ 全年切換 ══ */
-
-
-/* ══ 分頁 ══ */
-
 
 /* ══ 文件中心（串接 GAS API）══ */
 
@@ -1297,14 +1272,6 @@ function dcShowError(msg) {
   area.innerHTML = '<div style="color:#e07070;text-align:center;padding:32px;font-size:13px;">⚠ ' + msg + '</div>';
 }
 
-/* ── 切換分類 ── */
-
-/* ── 渲染（分頁 + 過濾）── */
-
-
-
-
-
 /* ── 上傳（前端 → base64 → GAS）── */
 
 function dcHandleUpload(input) {
@@ -1534,7 +1501,6 @@ function dcSwitch(el, cat) {
   dcRender();
 }
 
-
 function dcRender() {
   /* 清單模式 */
   var allItems = Array.from(document.querySelectorAll('#dc-file-area .doccenter-file-item'));
@@ -1653,14 +1619,6 @@ function fmtDT(v) {
   var p = function(n){ return String(n).padStart(2,'0'); };
   return d.getFullYear()+'/'+p(d.getMonth()+1)+'/'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
 }
-/* ── 起訖格式：YYYY-MM-DD HH:MM ~ YYYY-MM-DD HH:MM ── */
-
-/* ── 只格式化日期（不含時間），處理各種格式包括 Date.toString() ── */
-
-
-/* ── 附件狀態徽章 helper ── */
-
-/* ══ 手機版：通用卡片列表渲染 ══ */
 
 /* ════════════════════════════════════════
    登入 / 帳號管理系統
@@ -2653,7 +2611,7 @@ function loadAccounts() {
     .catch(function(err){
       // no-cors mode returns opaque response → try re-fetch in no-cors mode as fallback
       console.warn('getAccounts cors failed, trying no-cors approach:', err.message);
-      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#f44336;padding:24px;">連線失敗：請確認 GAS 已部署並設定為允許所有人存取。<br><small style="color:#999;">'+err.message+'</small></td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#f44336;padding:24px;">連線失敗，請確認GAS已部署並設定為允許所有人存取。<br><small style="color:#999;">'+err.message+'</small></td></tr>';
     });
 }
 
@@ -2860,7 +2818,7 @@ function disableAccount(mail) {
 
 /* ── 刪除帳號 ── */
 function deleteAccount(mail, name) {
-  if (!confirm('⚠️ 確定要永久刪除 ' + (name||mail) + ' 的帳號？\n此操作不可復原，後台資料也會一併刪除。')) return;
+  if (!confirm('⚠️ 確定要永久刪除' + (name||mail) + '的帳號？\n此操作不可復原，後台資料也會一併刪除。')) return;
   fetch(GAS_URL, { method:'POST', mode:'no-cors',
     body: JSON.stringify({ action:'deleteAccount', mail:mail })
   }).then(function(){
@@ -2945,7 +2903,7 @@ function saveAccount() {
   var editId   = document.getElementById('acc-edit-id').value;
   var errEl    = document.getElementById('acc-form-err');
 
-  if (!fullMail || fullMail.indexOf('@')<0) { errEl.textContent='請填寫完整的電子信箱（含 @）'; errEl.style.display='block'; return; }
+  if (!fullMail || fullMail.indexOf('@')<0) { errEl.textContent='請填寫完整的電子信箱'; errEl.style.display='block'; return; }
   if (!name)     { errEl.textContent='請填寫姓名';     errEl.style.display='block'; return; }
   if (!editId && !pass) { errEl.textContent='新增帳號必須設定密碼'; errEl.style.display='block'; return; }
   errEl.style.display = 'none';
@@ -2993,17 +2951,6 @@ function resetPassword(mail) {
   });
 }
 
-
-
-/* ════ 審核流程 ════ */
-var _reviewTarget = null; // { id, type, name }
-
-
-
-
-
-
-
 function showToastGlobal(msg, type) {
   var ct = document.getElementById('toast-container');
   if (!ct) { ct = document.createElement('div'); ct.id='toast-container'; ct.style.cssText='position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;'; document.body.appendChild(ct); }
@@ -3044,6 +2991,14 @@ function closeA2hsModal() {
 function showCredHelpModal() {
   var ov = document.getElementById('credHelpOverlay');
   if (ov) ov.classList.add('open');
+  var backBtn = document.getElementById('credHelpBackBtn');
+  if (backBtn) backBtn.style.display = isMobileUA() ? '' : 'none';
+}
+function backToA2hsModal() {
+  var credOv = document.getElementById('credHelpOverlay');
+  if (credOv) credOv.classList.remove('open');
+  var a2hsOv = document.getElementById('a2hsOverlay');
+  if (a2hsOv) a2hsOv.classList.add('open');
 }
 function closeCredHelpModal() {
   var ov = document.getElementById('credHelpOverlay');
@@ -3070,8 +3025,6 @@ function showOnboardingModals() {
     showCredHelpModal();
   }
 }
-
-/* ── 國假兼職判斷：初始化時根據 CURRENT_USER.title 設定顯示 ── */
 
 dcLoadFiles();
 applyBlur(true); // 預設模糊，initAuth 登入成功後解除
