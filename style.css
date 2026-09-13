@@ -575,7 +575,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 .a2hs-btn-row{margin-top:4px;display:flex;gap:10px;}
 .a2hs-btn-row .a2hs-confirm-btn{margin-top:0;flex:1;}
 .a2hs-back-btn{
-  flex:0 0 108px;height:44px;border-radius:var(--radius-md);
+  flex:1;height:44px;border-radius:var(--radius-md);
   border:1px solid #4a4636;background-color:transparent;color:#c9a84c;
   font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;
   transition:background-color .15s,border-color .15s;
@@ -1013,7 +1013,9 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 .login-field{display:flex;flex-direction:column;gap:5px;}
 .login-label{font-size:12px;font-weight:500;color:var(--color-text-secondary);}
 .login-email-row{display:flex;gap:6px;}
-.login-input{border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 12px;font-family:var(--font-body);font-size:16px;color:var(--color-text-primary);background:#fff;outline:none;width:100%;transition:.15s;}
+.login-input{box-sizing:border-box;max-width:100%;border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 12px;font-family:var(--font-body);font-size:16px;color:var(--color-text-primary);background:#fff;outline:none;width:100%;transition:.15s;}
+.login-input-pass{padding-right:44px;}
+.login-pass-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:#9a9680;padding:4px;}
 .login-input:focus{border-color:var(--color-gold);box-shadow:0 0 0 3px var(--color-gold-bg);}
 .login-domain{border:1.5px solid var(--color-border-card);border-radius:8px;padding:9px 10px;font-family:var(--font-body);font-size:13px;color:var(--color-text-primary);background:#fff;outline:none;cursor:pointer;white-space:nowrap;}
 .login-domain:focus{border-color:var(--color-gold);}
