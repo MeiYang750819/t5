@@ -22,6 +22,8 @@
 <body>
 
 <div class="app-wrapper">
+
+  <!-- ══ Header ══ -->
     
 <!-- ════ 加入主畫面教學（手機版）════ -->
 <div class="a2hs-overlay" id="a2hsOverlay">
@@ -121,7 +123,7 @@
 
     <div class="a2hs-btn-row">
       <button class="a2hs-back-btn" id="credHelpBackBtn" onclick="backToA2hsModal()">← 回上一頁</button>
-      <button class="a2hs-confirm-btn" onclick="closeCredHelpModal()">我知道了，開始使用</button>
+      <button class="a2hs-confirm-btn" onclick="closeCredHelpModal()">開始使用</button>
     </div>
   </div>
 </div>
@@ -147,8 +149,7 @@
           autocomplete="username"
           oninput="updateMailSuggestions()"
           onblur="setTimeout(function(){var d=document.getElementById('login-mail-dropdown');if(d)d.style.display='none';},200)"
-          onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()"
-          style="padding-right:12px;font-size:16px;"/>
+          onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()"/>
         <div id="login-mail-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid var(--color-gold);border-radius:8px;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.12);overflow:hidden;"></div>
       </div>
     </div>
@@ -157,13 +158,12 @@
     <div class="login-field">
       <label class="login-label">密碼</label>
       <div style="position:relative;">
-        <input class="login-input" id="login-pass" type="password"
+        <input class="login-input login-input-pass" id="login-pass" type="password"
           placeholder="請輸入密碼"
           autocomplete="current-password"
-          onkeydown="if(event.key==='Enter')doLogin()"
-          style="padding-right:44px;"/>
+          onkeydown="if(event.key==='Enter')doLogin()"/>
         <button onclick="togglePassView()" type="button"
-          style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:#9a9680;padding:4px;" id="pass-eye" title="顯示/隱藏密碼">👁</button>
+          class="login-pass-eye" id="pass-eye" title="顯示/隱藏密碼">👁</button>
       </div>
     </div>
 
@@ -740,7 +740,7 @@
       </div>
 
       <!-- 姓名 + 權限 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;">
         <div style="display:flex;flex-direction:column;gap:5px;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">姓名<span style="color:#e53935;margin-left:2px;">*</span></label>
     <input class="form-input" id="acc-name" placeholder="真實姓名"/>
@@ -758,7 +758,7 @@
       </div>
 
       <!-- 團隊 + 職稱 -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;">
         <div style="display:flex;flex-direction:column;gap:5px;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">團隊</label>
     <select class="filter-select" id="acc-team" style="height:36px;">
@@ -864,6 +864,8 @@
   </div>
 </div>
 
+<!-- ══ 流程查看 Modal（員工用）══ -->
+
 <script>
 
 
@@ -923,6 +925,10 @@ function showPage(pageId, el) {
   }
   return false;
 }
+
+/* ══ 清單/圖示切換 ══ */
+
+/* ══ 上傳 PDF ══ */
 
 /* ══ 意見欄 ══ */
 function openFeedback()  { document.getElementById('feedbackModal').classList.add('open'); }
@@ -1026,6 +1032,15 @@ function submitBug() {
     alert('送出失敗：' + err.message);
   });
 }
+
+
+/* ══ 年度切換 ══ */
+
+/* ══ 全年切換 ══ */
+
+
+/* ══ 分頁 ══ */
+
 
 /* ══ 文件中心（串接 GAS API）══ */
 
@@ -1272,6 +1287,14 @@ function dcShowError(msg) {
   area.innerHTML = '<div style="color:#e07070;text-align:center;padding:32px;font-size:13px;">⚠ ' + msg + '</div>';
 }
 
+/* ── 切換分類 ── */
+
+/* ── 渲染（分頁 + 過濾）── */
+
+
+
+
+
 /* ── 上傳（前端 → base64 → GAS）── */
 
 function dcHandleUpload(input) {
@@ -1501,6 +1524,7 @@ function dcSwitch(el, cat) {
   dcRender();
 }
 
+
 function dcRender() {
   /* 清單模式 */
   var allItems = Array.from(document.querySelectorAll('#dc-file-area .doccenter-file-item'));
@@ -1619,6 +1643,14 @@ function fmtDT(v) {
   var p = function(n){ return String(n).padStart(2,'0'); };
   return d.getFullYear()+'/'+p(d.getMonth()+1)+'/'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
 }
+/* ── 起訖格式：YYYY-MM-DD HH:MM ~ YYYY-MM-DD HH:MM ── */
+
+/* ── 只格式化日期（不含時間），處理各種格式包括 Date.toString() ── */
+
+
+/* ── 附件狀態徽章 helper ── */
+
+/* ══ 手機版：通用卡片列表渲染 ══ */
 
 /* ════════════════════════════════════════
    登入 / 帳號管理系統
