@@ -741,11 +741,11 @@
 
       <!-- 姓名 + 權限 -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;">
-        <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;flex-direction:column;gap:5px;min-width:0;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">姓名<span style="color:#e53935;margin-left:2px;">*</span></label>
     <input class="form-input" id="acc-name" placeholder="真實姓名"/>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;flex-direction:column;gap:5px;min-width:0;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">權限<span style="color:#e53935;margin-left:2px;">*</span></label>
     <select class="filter-select" id="acc-role" style="height:36px;">
       <option value="boss">boss（老闆）</option>
@@ -759,7 +759,7 @@
 
       <!-- 團隊 + 職稱 -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;">
-        <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;flex-direction:column;gap:5px;min-width:0;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">團隊</label>
     <select class="filter-select" id="acc-team" style="height:36px;">
       <option value="">請選擇</option>
@@ -769,7 +769,7 @@
       <option value="內廚">內廚</option>
     </select>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;flex-direction:column;gap:5px;min-width:0;">
     <label style="font-size:12px;font-weight:500;color:var(--color-text-secondary);">職稱</label>
     <input class="form-input" id="acc-title" type="text" placeholder="請輸入職稱"/>
         </div>
@@ -1045,7 +1045,7 @@ function submitBug() {
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbzqp-zwDsQnrBrRN9rrjBtIbPhkg-RFzFJwVtQG7J9B7QPM1ev_0hZwQiKIVTWjUud_/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycby2sCwKPZHWkIn6rXI06qBbJwHPeYCvgock_tUY_WBn3gGDel8fK1jsJ_tEqNbXpA05/exec';
 
 /* ── 帶 timeout 的 fetch（避免長時間 pending 卡 UI）── */
 function fetchWithTimeout(url, options, timeoutMs) {
