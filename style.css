@@ -280,7 +280,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 .header-logo{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--color-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:11px;font-weight:var(--font-weight-bold);color:var(--color-gold);flex-shrink:0;background-color:var(--color-gold-bg);text-align:center;line-height:1.2;}
 .header-title-group{display:flex;flex-direction:column;gap:2px;}
 .header-title{font-family:var(--font-display);font-size:var(--font-size-brand);font-weight:var(--font-weight-semibold);color:var(--color-text-on-dark);letter-spacing:.04em;line-height:var(--line-height-tight);}
-.header-title-sub{font-family:var(--font-body);font-size:11px;font-weight:400;color:var(--color-text-muted);letter-spacing:.02em;}
+.header-title-sub{font-family:var(--font-body);font-size:11px;font-weight:400;color:#f0d878;letter-spacing:.02em;}
 .header-subtitle{font-family:var(--font-body);font-size:var(--font-size-xs);font-weight:var(--font-weight-light);color:var(--color-text-on-dark-sub);letter-spacing:.04em;}
 
 .header-right{display:flex;align-items:center;gap:var(--space-2);}
@@ -1237,10 +1237,12 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
   .form-modal-box,.feedback-modal-box,.reject-modal-box{ padding:18px 16px; }
   #reviewFlowBar{ flex-wrap:wrap !important; row-gap:8px; }
 
-  /* ── 意見欄：手機版欄位縮小＋允許換行，避免「意見類型」選單被推出畫面外 ── */
-  .feedback-row-1{ flex-wrap:wrap; row-gap:8px; }
-  .feedback-name-input{ width:76px; }
-  .feedback-type-select{ width:auto; flex:1 1 90px; min-width:90px; }
+  /* ── 意見欄：手機版把署名／匿名／意見類型全部縮小，維持同一排、不換行 ── */
+  .feedback-row-1{ flex-wrap:nowrap; gap:6px; }
+  .feedback-label{ font-size:12px; }
+  .feedback-name-input{ width:64px; padding:0 6px; font-size:12px; }
+  .feedback-checkbox{ width:16px; height:16px; }
+  .feedback-type-select{ width:auto; flex:0 1 78px; min-width:64px; padding:0 20px 0 8px; font-size:11px; background-position:right 5px center; }
 
   /* ── 帳號管理：總帳號數 → 總數（手機版 label 縮短）── */
   #page-account .stat-card:first-child .stat-card-label{ font-size:0; }
