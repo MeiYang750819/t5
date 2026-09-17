@@ -246,7 +246,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none;font-family:var(-
 .header-title{font-family:var(--font-display);font-size:var(--font-size-brand);font-weight:var(--font-weight-semibold);color:var(--color-text-on-dark);letter-spacing:.04em;line-height:var(--line-height-tight);}
 /* ★★★「Social Company」小字的顏色，就是下面這行的 color ★★★
    想換顏色只要改 #f0d878 這組色碼即可（目前為淺黃色）。 */
-.header-title-sub{font-family:var(--font-body);font-size:11px;font-weight:400;color:#f0d878;letter-spacing:.02em;}
+.header-title-sub{font-family:var(--font-body);font-size:11px;font-weight:400;color:#fff2cc;letter-spacing:.02em;}
 /* 這張 LOGO 是「白底黑字」的 JPG，沒有透明背景。
    invert(1) 先把它翻成「黑底白字」，再用 mix-blend-mode:screen 讓黑色部分融進深色標題列，
    只留下白色的字，效果接近去背。等之後有透明底 PNG 再換掉這段即可。 */
