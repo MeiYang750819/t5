@@ -105,7 +105,7 @@
         <div class="a2hs-step-visual">
           <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         </div>
-        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>使用的是<b>填寫勞保卡時所留的mail</b></div>
+        <div class="a2hs-step-text"><span class="a2hs-step-num">2</span>使用的是<b>填寫勞保卡時所留的 mail</b></div>
       </div>
       <div class="a2hs-step">
         <div class="a2hs-step-visual">
@@ -170,7 +170,7 @@
     <div class="login-err" id="login-err"></div>
 
     <button class="login-btn" id="login-btn" onclick="doLogin()">登 入</button>
-    <div style="text-align:center;margin-top:-8px;"><a href="#" onclick="testGasConnection();return false;" style="font-size:11px;color:var(--color-text-muted);text-decoration:underline;">⚙ 測試GAS連線</a></div>
+    <div style="text-align:center;margin-top:-8px;"><a href="#" onclick="testGasConnection();return false;" style="font-size:11px;color:var(--color-text-muted);text-decoration:underline;">⚙ 測試 GAS 連線</a></div>
 
     <div style="text-align:center;margin-top:6px;">
       <img src="assets/SC_LOGO.jpg" alt="Social Company" style="height:26px;width:auto;opacity:.55;" />
@@ -190,7 +190,7 @@
     <div class="header-brand">
       <img src="https://mys0819.github.io/AMS/assets/MYs_logo_去背.png" alt="MYs Logo" class="header-logo" style="height:38px;width:auto;opacity:.9;" />
       <div class="header-title-group">
-        <span class="header-title">行政公告管理系統<span class="header-title-sub"> Social Company</span></span>
+        <span class="header-title">行政公告管理系統<span class="header-title-sub"> Social Company</span><img src="assets/SC_LOGO.jpg" alt="Social Company" class="header-sc-logo" /></span>
         <span class="header-subtitle" id="header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
         <span class="mob-header-copyright">© Copyright 2026 MYs System Version:b1.0.0.0-04-13-2026-115</span>
       </div>
@@ -549,7 +549,7 @@
             <p class="article-body">
               請使用下方連結進行線上建檔作業，<br>
               建檔前請確認資料正確，送出後不可更改。<br>
-              如有疑問請聯絡系統管理員。
+              如有疑問請聯絡人資承辦。
             </p>
             <div class="article-btn-group">
               <a class="article-link-btn" href="https://mys0819.github.io/LRS1/" target="_blank">☛ 點擊執行建檔</a>
@@ -872,7 +872,6 @@
 <script>
 
 
-/* ══ 右側介面跳轉 ══ */
 /* ── 重置所有可能的捲動容器到最頂端（避免手機版切頁/非同步資料載入後，
    搜尋框因為捲動位置偏移而被捲到看不見）── */
 window.__resetScrollTops = function() {
@@ -929,9 +928,6 @@ function showPage(pageId, el) {
   return false;
 }
 
-/* ══ 清單/圖示切換 ══ */
-
-/* ══ 上傳 PDF ══ */
 
 /* ══ 意見欄 ══ */
 function openFeedback()  { document.getElementById('feedbackModal').classList.add('open'); }
@@ -992,7 +988,6 @@ function submitFeedback() {
   });
 }
 
-/* ══ 退件原因 ══ */
 
 /* ══ 回報問題 ══ */
 function openBugReport()  { document.getElementById('bugModal').classList.add('open'); }
@@ -1037,14 +1032,6 @@ function submitBug() {
 }
 
 
-/* ══ 年度切換 ══ */
-
-/* ══ 全年切換 ══ */
-
-
-/* ══ 分頁 ══ */
-
-
 /* ══ 文件中心（串接 GAS API）══ */
 
 // ★★★ 部署 GAS 後貼上你的 Web App URL ★★★
@@ -1067,7 +1054,6 @@ var DC_LIST_PER  = 7;
 var DC_GRID_PER  = 12;
 var DC_PER_PAGE  = 12;
 var dcCatLabels  = {all:'全部文件',hr:'人事相關',admin:'行政表單',training:'教育訓練',announce:'企業公告',law:'法規公告',meeting:'會議紀錄',other:'其他事項'};
-var dcDlStyle    = 'display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 12px;border-radius:4px;border:1px solid #666;background-color:#555;color:#c9a84c;font-family:var(--font-body);font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;';
 
 /* ── 讀取文件列表（從 GAS）── */
 function dcLoadFiles() {
@@ -1225,7 +1211,6 @@ function dcBuildFileList(files) {
     var tagLabel = f.cat === '其他' ? '其他事項' : (f.cat || '其他事項');
     var icon     = dcFileIcon(f.name); // 🖼️ 圖片 / 📋 PDF / 📄 其他
     var dlUrl    = 'https://drive.google.com/uc?export=download&id=' + f.fileId;
-    var viewUrl  = 'https://drive.google.com/file/d/' + f.fileId + '/preview';
     var isImage  = /\.(jpg|jpeg|png|gif|webp|bmp)$/i.test(f.name);
     var isPdf    = /\.pdf$/i.test(f.name);
     var canPreview = isImage || isPdf;
@@ -1289,13 +1274,6 @@ function dcShowError(msg) {
   if (!area) return;
   area.innerHTML = '<div style="color:#e07070;text-align:center;padding:32px;font-size:13px;">⚠ ' + msg + '</div>';
 }
-
-/* ── 切換分類 ── */
-
-/* ── 渲染（分頁 + 過濾）── */
-
-
-
 
 
 /* ── 上傳（前端 → base64 → GAS）── */
@@ -1622,15 +1600,7 @@ function dcSetView(mode, btn) {
 
 function dcTriggerUpload(){document.getElementById('dc-file-input').click();}
 
-/* ══ 篩選 + 分頁 ══ */
 
-/* ════ 所有申請：從 GAS 動態載入 ════ */
-
-/* ── applyDate 標準化：處理 GAS Date 物件序列化格式 ── */
-var ALL_APPS_DATA = [];
-
-
-/* ── 日期格式化 ── */
 /* ── 把任何日期字串/Date 轉成 yyyy/mm/dd HH:MM ── */
 
 function fmtDT(v) {
@@ -1646,14 +1616,7 @@ function fmtDT(v) {
   var p = function(n){ return String(n).padStart(2,'0'); };
   return d.getFullYear()+'/'+p(d.getMonth()+1)+'/'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
 }
-/* ── 起訖格式：YYYY-MM-DD HH:MM ~ YYYY-MM-DD HH:MM ── */
 
-/* ── 只格式化日期（不含時間），處理各種格式包括 Date.toString() ── */
-
-
-/* ── 附件狀態徽章 helper ── */
-
-/* ══ 手機版：通用卡片列表渲染 ══ */
 
 /* ════════════════════════════════════════
    登入 / 帳號管理系統
@@ -1681,16 +1644,6 @@ var ROLE_BADGE = {
   boss:      'background:#b71c1c;color:#fff;',
 };
 
-/* ── 各角色可見的側邊欄 item（data-role 屬性）── */
-var ROLE_PAGES = {
-  guest:    [],
-  parttime: ['doccenter','extraops'],
-  employee: ['doccenter'],
-  fulltime: ['doccenter','extraops'],
-  manager:  ['doccenter','extraops','workhour','labor','main','readlist'],
-  admin:    ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
-  boss:     ['doccenter','extraops','workhour','labor','main','account','feedback-mgr','report-mgr','readlist'],
-};
 
 var ROLE_SIDEBAR_MAP = {
   guest:    [],
@@ -2200,7 +2153,6 @@ function initAuth() {
   showOnboardingModals();
 }
 
-/* ══ 執行登入 ══ */
 
 /* ── 測試 GAS 連線 ── */
 function testGasConnection() {
@@ -2671,7 +2623,6 @@ function updateAccStats() {
   if(g('acc-dis'))   g('acc-dis').textContent   = dis;
 }
 
-/* ── 渲染表格 ── */
 /* ── 點擊帳號管理儀表板統計卡 → 篩選下方列表 ── */
 function accFilterByStat(kind) {
   var roleF   = document.getElementById('acc-role-filter');
@@ -2714,7 +2665,6 @@ function renderAccTable() {
   }
   list.forEach(function(a, i){
     var roleStyle = ROLE_BADGE[a.role] || 'background:#eee;color:#333;';
-    var stColor   = a.status==='停用'?'color:#c62828;background:#fce4e4;':'color:#2e7d32;background:#e8f5e9;';
     var tr = document.createElement('tr');
     if(i%2) tr.style.background='var(--color-bg-table-alt)';
     var isBoss = CURRENT_USER && CURRENT_USER.role === 'boss';
@@ -2783,7 +2733,6 @@ function toggleAccCard(detailId, toggleEl) {
   if (toggleEl) toggleEl.textContent = d.classList.contains('open') ? '▲ 收起' : '▼ 展開';
 }
 
-/* ── 開啟帳號 Modal ── */
 
 /* ── 帳號 Modal 信箱建議 ── */
 function updateAccMailSuggestions(inputEl) {
